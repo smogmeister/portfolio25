@@ -4,7 +4,7 @@ import IntroCard from "../components/IntroCard";
 import ProjectCard from "../components/ProjectCard";
 import ContactFooter from "../components/ContactFooter";
 import BottomSheet from "../components/BottomSheet";
-import { ExternalLink } from "lucide-react";
+import ProjectBottomSheet from "../components/ProjectBottomSheet";
 
 type ProjectType = "profile" | "schaeffler" | "beautified" | null;
 
@@ -81,249 +81,53 @@ export default function Home() {
       </BottomSheet>
 
       {/* Project Bottom Sheets */}
-      <BottomSheet isOpen={openProject === "schaeffler"} onClose={() => setOpenProject(null)}>
-        <div className="px-4 sm:px-6 lg:px-8 pb-8">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl font-['Zodiak'] text-zinc-900 mb-8">
-              Schaeffler medias
-            </h2>
-            
-            {/* 2-column layout: Description + Buttons */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-              {/* Left column: Description */}
-              <div className="lg:col-span-2">
-                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
-                  medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers. As the <span className="underline text-zinc-900">Design Lead</span>, I've been responsible for shaping the user experience and design strategy of this platform.
-                </p>
-                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
-                  The platform serves thousands of B2B customers, providing them with an intuitive way to browse, configure, and order industrial products. My work here involves everything from user research and design strategy to pixel-perfect implementation and design system management.
-                </p>
-                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed">
-                  Working on medias has been an incredible journey in understanding complex B2B workflows and translating them into elegant, user-friendly interfaces.
-                </p>
-              </div>
-              
-              {/* Right column: Buttons */}
-              <div className="flex flex-col gap-3 lg:items-start">
-                <a
-                  href="https://medias.schaeffler.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full lg:w-auto"
-                >
-                  <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-300 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
-                  <span className="relative z-10 text-zinc-700 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
-                    Website
-                  </span>
-                  <ExternalLink className="relative z-10 w-4 h-4 text-zinc-700" />
-                </a>
-                <a
-                  href="https://www.figma.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full lg:w-auto"
-                >
-                  <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-300 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
-                  <span className="relative z-10 text-zinc-700 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
-                    Figma
-                  </span>
-                  <ExternalLink className="relative z-10 w-4 h-4 text-zinc-700" />
-                </a>
-              </div>
-            </div>
+      <ProjectBottomSheet
+        isOpen={openProject === "schaeffler"}
+        onClose={() => setOpenProject(null)}
+        title="Schaeffler medias"
+        description={[
+          <>
+            medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers. As the <span className="underline text-zinc-900">Design Lead</span>, I've been responsible for shaping the user experience and design strategy of this platform.
+          </>,
+          <>
+            The platform serves thousands of B2B customers, providing them with an intuitive way to browse, configure, and order industrial products. My work here involves everything from user research and design strategy to pixel-perfect implementation and design system management.
+          </>,
+        ]}
+        links={[
+          { label: "View online", url: "https://medias.schaeffler.com" },
+          { label: "View in Figma", url: "https://www.figma.com/design/E9h6FXwgYwqShDPrUyKpsl/Portfolio?node-id=8-7&t=fKPugTQKA8eOOZjf-1" },
+        ]}
+        images={[
+          { src: "/schaeffler-example.png", alt: "schaeffler project 1" },
+          { src: "/schaeffler-example-2.png", alt: "schaeffler project 2" },
+          { src: "/schaeffler-example-3.png", alt: "schaeffler project 3" },
+          { src: "/schaeffler-example-4.png", alt: "schaeffler project 4" },
+        ]}
+      />
 
-            {/* Bento Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-fr">
-              {/* Image 1 - Large featured image, spans 2x2 on larger screens */}
-              <div className="col-span-2 sm:col-span-2 lg:col-span-2 row-span-2 aspect-square sm:aspect-[2/1] lg:aspect-square">
-                <img 
-                  src="/medias-solo.png" 
-                  alt="Schaeffler medias project 1" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 2 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/medias-solo.png" 
-                  alt="Schaeffler medias project 2" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 3 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/medias-solo.png" 
-                  alt="Schaeffler medias project 3" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 4 - Wide image spanning 2 columns */}
-              <div className="col-span-2 sm:col-span-2 lg:col-span-2 row-span-1 aspect-[2/1]">
-                <img 
-                  src="/medias-solo.png" 
-                  alt="Schaeffler medias project 4" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 5 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/medias-solo.png" 
-                  alt="Schaeffler medias project 5" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 6 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/medias-solo.png" 
-                  alt="Schaeffler medias project 6" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 7 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/medias-solo.png" 
-                  alt="Schaeffler medias project 7" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 8 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/medias-solo.png" 
-                  alt="Schaeffler medias project 8" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </BottomSheet>
-
-      <BottomSheet isOpen={openProject === "beautified"} onClose={() => setOpenProject(null)}>
-        <div className="px-4 sm:px-6 lg:px-8 pb-8">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl font-['Zodiak'] text-zinc-900 mb-8">
-              Beautified.app
-            </h2>
-            
-            {/* 2-column layout: Description + Buttons */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-              {/* Left column: Description */}
-              <div className="lg:col-span-2">
-                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
-                  Beautified.app is an innovative platform that transforms data into beautiful visuals through AI-powered conversations. This project represents my passion for <span className="underline text-zinc-900">combining design with AI technology</span> to create intuitive user experiences.
-                </p>
-                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
-                  The challenge was to make complex data visualization accessible to everyone, regardless of their technical background. By leveraging AI, users can simply describe what they want to see, and the platform generates professional, publication-ready visuals.
-                </p>
-                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed">
-                  This project showcases how thoughtful design can bridge the gap between powerful technology and everyday usability, making data storytelling more accessible and enjoyable.
-                </p>
-              </div>
-              
-              {/* Right column: Buttons */}
-              <div className="flex flex-col gap-3 lg:items-start">
-                <a
-                  href="https://beautified.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full lg:w-auto"
-                >
-                  <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-300 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
-                  <span className="relative z-10 text-zinc-700 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
-                    Website
-                  </span>
-                  <ExternalLink className="relative z-10 w-4 h-4 text-zinc-700" />
-                </a>
-                <a
-                  href="https://www.figma.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full lg:w-auto"
-                >
-                  <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-300 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
-                  <span className="relative z-10 text-zinc-700 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
-                    Figma
-                  </span>
-                  <ExternalLink className="relative z-10 w-4 h-4 text-zinc-700" />
-                </a>
-              </div>
-            </div>
-
-            {/* Bento Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-fr">
-              {/* Image 1 - Large featured image, spans 2x2 on larger screens */}
-              <div className="col-span-2 sm:col-span-2 lg:col-span-2 row-span-2 aspect-square sm:aspect-[2/1] lg:aspect-square">
-                <img 
-                  src="/beautified-solo.png" 
-                  alt="Beautified.app project 1" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 2 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/beautified-solo.png" 
-                  alt="Beautified.app project 2" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 3 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/beautified-solo.png" 
-                  alt="Beautified.app project 3" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 4 - Wide image spanning 2 columns */}
-              <div className="col-span-2 sm:col-span-2 lg:col-span-2 row-span-1 aspect-[2/1]">
-                <img 
-                  src="/beautified-solo.png" 
-                  alt="Beautified.app project 4" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 5 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/beautified-solo.png" 
-                  alt="Beautified.app project 5" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 6 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/beautified-solo.png" 
-                  alt="Beautified.app project 6" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 7 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/beautified-solo.png" 
-                  alt="Beautified.app project 7" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              {/* Image 8 */}
-              <div className="col-span-1 row-span-1 aspect-square">
-                <img 
-                  src="/beautified-solo.png" 
-                  alt="Beautified.app project 8" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </BottomSheet>
+      <ProjectBottomSheet
+        isOpen={openProject === "beautified"}
+        onClose={() => setOpenProject(null)}
+        title="Beautified.app"
+        description={[
+          <>
+            Beautified.app is my side project. Here I experiment with different AI technologies and design approaches. Originally I started this because I wanted a cool tool to visualize some data for my presentations, but it also found a small group of users.
+          </>,
+          <>
+            Never the less, I do not see it as a Startup or SaaS, but more of a fun way to play and experiment with design and AI.
+          </>,
+        ]}
+        links={[
+          { label: "View online", url: "https://beautified.app" },
+          { label: "View in Figma", url: "https://www.figma.com/design/E9h6FXwgYwqShDPrUyKpsl/Portfolio?node-id=48-12229&t=fKPugTQKA8eOOZjf-1" },
+        ]}
+        images={[
+          { src: "/beautified-example.png", alt: "Beautified.app project 1" },
+          { src: "/beautified-example-2.png", alt: "Beautified.app project 2" },
+          { src: "/beautified-example-3.png", alt: "Beautified.app project 3" },
+          { src: "/beautified-example-4.png", alt: "Beautified.app project 4" },
+        ]}
+      />
     </main>
   );
 }
