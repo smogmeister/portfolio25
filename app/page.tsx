@@ -13,8 +13,18 @@ export default function Home() {
   const [openProject, setOpenProject] = useState<ProjectType>(null);
 
   return (
-    <main className="min-h-screen w-full bg-[#fcfcf9] flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 font-['Plus_Jakarta_Sans']">
-      <div className="w-full max-w-[1200px] relative">
+    <main className="min-h-screen w-full bg-[#fcfcf9] flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 font-['Plus_Jakarta_Sans'] relative">
+      <div 
+        className="absolute inset-0 opacity-30 bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{ backgroundImage: "url('/bg_pattern.jpg')" }}
+      />
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{ 
+          background: `radial-gradient(ellipse at center, transparent 10%, #fcfcf9 100%)`
+        }}
+      />
+      <div className="w-full max-w-[1200px] relative z-10">
         <div className="w-full inline-flex flex-col justify-center items-center gap-4">
           <div className="w-full flex flex-col lg:flex-row justify-start items-stretch gap-4">
             {/* Left: Intro card */}
@@ -90,7 +100,7 @@ export default function Home() {
             medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers. As the <span className="underline text-zinc-900">Design Lead</span>, I've been responsible for shaping the user experience and design strategy of this platform.
           </>,
           <>
-            The platform serves thousands of B2B customers, providing them with an intuitive way to browse, configure, and order industrial products. My work here involves everything from user research and design strategy to pixel-perfect implementation and design system management.
+            The platform serves thousands of B2B customers, providing them with an intuitive way to browse, configure, and order industrial products. My work here involves everything from user research and design strategy to pixel-perfect implementation and design system management. Since I took over that role, the new design has partially been roled out. 
           </>,
         ]}
         links={[
