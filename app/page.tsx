@@ -1,10 +1,16 @@
- "use client";
-import { LinkedinIcon, Mail, ArrowRight, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+"use client";
 import { useState } from "react";
+import IntroCard from "../components/IntroCard";
+import ProjectCard from "../components/ProjectCard";
+import ContactFooter from "../components/ContactFooter";
+import BottomSheet from "../components/BottomSheet";
+import { ExternalLink } from "lucide-react";
+
+type ProjectType = "profile" | "schaeffler" | "beautified" | null;
 
 export default function Home() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [openProject, setOpenProject] = useState<ProjectType>(null);
 
   return (
     <main className="min-h-screen w-full bg-[#fcfcf9] flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 font-['Plus_Jakarta_Sans']">
@@ -12,321 +18,312 @@ export default function Home() {
         <div className="w-full inline-flex flex-col justify-center items-center gap-4">
           <div className="w-full flex flex-col lg:flex-row justify-start items-stretch gap-4">
             {/* Left: Intro card */}
-            <section className="w-full lg:w-96 self-stretch p-8 bg-white rounded-[32px] outline outline-8 outline-offset-[-8px] outline-zinc-100 backdrop-blur-[20px] inline-flex flex-col justify-end items-start gap-4 overflow-hidden">
-              <img src="/avatar.png" alt="Jan Brinkmann" className="" />
-
-              <div className="self-stretch flex flex-col justify-start items-start gap-6">
-                <div className="self-stretch flex flex-col justify-start items-start gap-4">
-                  <p className="self-stretch text-zinc-700 text-2xl font-['Zodiak'] leading-6">
-                    Hi, I’m <span className="underline">Jan</span>
-                  </p>
-                  <p className="self-stretch text-zinc-500 text-base font-normal font-['Plus_Jakarta_Sans'] leading-6">
-                    I am a product designer that spent the last 5 years moving pixels to make people enjoy digital experiences.
-                  </p>
-                </div>
-
-                <button 
-                  onClick={() => setIsSheetOpen(true)}
-                  className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer">
-                  <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-300 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
-                  <span className="relative z-10 text-zinc-700 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
-                    More about me
-                  </span>
-                  <ArrowRight className="relative z-10 w-4 h-4 text-zinc-700 transition-transform duration-300 ease-out group-hover:-rotate-45" />
-                </button>
-              </div>
-            </section>
+            <IntroCard onMoreClick={() => setIsSheetOpen(true)} />
 
             {/* Right: Projects + Contacts */}
             <div className="flex-1 flex flex-col justify-start items-start gap-4 self-stretch">
               {/* Projects row */}
               <div className="self-stretch flex flex-col md:flex-row justify-start items-stretch gap-4 flex-1">
                 {/* Schaeffler medias card */}
-                <motion.article 
-                  className="flex-1 p-8 rounded-[32px] outline outline-8 outline-offset-[-8px] outline-[#AEBFB0] bg-[#5D7F62] backdrop-blur-[20px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative after:content-[''] after:absolute after:inset-0 after:rounded-[32px] after:outline after:outline-8 after:outline-offset-[-8px] after:outline-[#AEBFB0] after:pointer-events-none after:z-20"
-                  initial="rest"
-                  whileHover="hover"
-                  animate="rest"
-                >
-                  <div className="self-stretch flex flex-col justify-start items-start gap-6 relative z-10">
-                    <div className="self-stretch flex flex-col justify-start items-start gap-4">
-                      <h2 className="self-stretch text-zinc-50 text-2xl font-['Zodiak'] leading-6">
-                        Schaeffler medias
-                      </h2>
-                      <p className="self-stretch text-zinc-200 text-base font-normal font-['Plus_Jakarta_Sans'] leading-6">
-                        medias is the B2B eCom platform of Schaeffler.
-                      </p>
-                    </div>
-                  </div>
-                  <motion.img 
-                    src="/medias-solo.png" 
-                    alt="Schaeffler medias" 
-                    className="absolute bottom-10 right-4 scale-125 w-auto object-contain z-0"
-                    variants={{
-                      rest: { scale: 1.25, y: 0 },
-                      hover: { scale: 1.5, y: -20 }
-                    }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  />
-                </motion.article>
+                <ProjectCard
+                  title="Schaeffler medias"
+                  description="medias is the B2B eCom platform of Schaeffler."
+                  imageSrc="/medias-solo.png"
+                  imageAlt="Schaeffler medias"
+                  outlineColor="#AEBFB0"
+                  bgColor="#5D7F62"
+                  textColor="text-zinc-50"
+                  textSecondaryColor="text-zinc-200"
+                  imagePosition="right-4"
+                  onClick={() => setOpenProject("schaeffler")}
+                />
 
                 {/* Beautified.app card */}
-                <motion.article 
-                  className="flex-1 p-8 rounded-[32px] outline outline-8 outline-offset-[-8px] outline-[#F3D4C9] bg-[#E8A994] backdrop-blur-[20px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative after:content-[''] after:absolute after:inset-0 after:rounded-[32px] after:outline after:outline-8 after:outline-offset-[-8px] after:outline-[#F3D4C9] after:pointer-events-none after:z-20"
-                  initial="rest"
-                  whileHover="hover"
-                  animate="rest"
-                >
-                  <div className="self-stretch flex flex-col justify-start items-start gap-6 relative z-10">
-                    <div className="self-stretch flex flex-col justify-start items-start gap-4">
-                      <h2 className="self-stretch text-zinc-900 text-2xl font-['Zodiak'] leading-6">
-                        Beautified.app
-                      </h2>
-                      <p className="self-stretch text-zinc-700 text-base font-normal font-['Plus_Jakarta_Sans'] leading-6">
-                        Beautified. app can turn data into pretty visuals by chatting with AI.
-                      </p>
-                    </div>
-                  </div>
-                  <motion.img 
-                    src="/beautified-solo.png" 
-                    alt="Beautified.app" 
-                    className="absolute bottom-10 right-0 scale-125 w-auto object-contain z-0"
-                    variants={{
-                      rest: { scale: 1.25, y: 0 },
-                      hover: { scale: 1.5, y: -20 }
-                    }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  />
-                </motion.article>
+                <ProjectCard
+                  title="Beautified.app"
+                  description="Beautified. app can turn data into pretty visuals by chatting with AI."
+                  imageSrc="/beautified-solo.png"
+                  imageAlt="Beautified.app"
+                  outlineColor="#F3D4C9"
+                  bgColor="#E8A994"
+                  textColor="text-zinc-900"
+                  textSecondaryColor="text-zinc-700"
+                  imagePosition="right-0"
+                  onClick={() => setOpenProject("beautified")}
+                />
               </div>
 
               {/* Contact row */}
-              <footer className="self-stretch p-8 bg-zinc-100 rounded-[32px] outline outline-8 outline-offset-[-8px] outline-white backdrop-blur-[20px] flex flex-col justify-start items-start gap-2.5">
-                <div className="self-stretch flex flex-col justify-center items-center gap-6">
-                  <div className="inline-flex justify-start items-start gap-4">
-                    <motion.a
-                      href="https://www.linkedin.com/in/jan-brinkmann-13a939181/"
-                      className="group relative h-10 pr-4 min-w-[160px] rounded-[999px] outline outline-1 outline-[#DBE0DE] flex items-center gap-2 overflow-visible"
-                      initial="rest"
-                      whileHover="hover"
-                      animate="rest"
-                    >
-                      {/* animated white background */}
-                      <motion.span
-                        variants={{
-                          rest: { width: "2.5rem" },
-                          hover: { width: "100%" },
-                        }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="absolute left-0 top-0 h-full rounded-[999px] bg-white"
-                      />
-                      {/* 3 animated outlines */}
-                      <motion.span
-                        variants={{
-                          rest: { opacity: 0, scale: 1 },
-                          hover: { 
-                            opacity: 0.75, 
-                            scale: 1,
-                            transition: { delay: 0.3, duration: 0.2 }
-                          },
-                        }}
-                        className="absolute inset-[-4px] rounded-[999px] outline outline-1 outline-[#DBE0DE] pointer-events-none"
-                      />
-                      <motion.span
-                        variants={{
-                          rest: { opacity: 0, scale: 1 },
-                          hover: { 
-                            opacity: 0.5, 
-                            scale: 1,
-                            transition: { delay: 0.35, duration: 0.2 }
-                          },
-                        }}
-                        className="absolute inset-[-8px] rounded-[999px] outline outline-1 outline-[#DBE0DE] pointer-events-none"
-                      />
-                      <motion.span
-                        variants={{
-                          rest: { opacity: 0, scale: 1 },
-                          hover: { 
-                            opacity: 0.25, 
-                            scale: 1,
-                            transition: { delay: 0.4, duration: 0.2 }
-                          },
-                        }}
-                        className="absolute inset-[-12px] rounded-[999px] outline outline-1 outline-[#DBE0DE] pointer-events-none"
-                      />
-                      <div className="w-full flex items-center relative z-10 gap-2">
-                        <span className="w-10 h-10 flex justify-center items-center flex-shrink-0">
-                          <LinkedinIcon className="w-4 h-4 text-zinc-600" />
-                        </span>
-                        <div className="relative flex-1 flex justify-center">
-                          <motion.span
-                            variants={{
-                              rest: { clipPath: "inset(0% 0% 0% 0%)" },
-                              hover: { clipPath: "inset(0% 0% 0% 100%)" },
-                            }}
-                            transition={{ duration: 0.2, ease: "easeOut" }}
-                            className="text-zinc-700 text-sm font-medium leading-6"
-                          >
-                            LinkedIn
-                          </motion.span>
-                          <motion.span
-                            variants={{
-                              rest: { clipPath: "inset(0% 100% 0% 0%)" },
-                              hover: { clipPath: "inset(0% 0% 0% 0%)" },
-                            }}
-                            transition={{ duration: 0.2, ease: "easeOut" }}
-                            className="absolute inset-0 flex items-center justify-center text-zinc-700 text-sm font-medium leading-6"
-                          >
-                            Let's connect!
-                          </motion.span>
-                        </div>
-                      </div>
-                    </motion.a>
-
-                    <motion.a
-                      href="mailto:jbrinkmann31@gmail.com"
-                      className="group relative h-10 pr-4 min-w-[140px] rounded-[999px] outline outline-1 outline-[#DBE0DE] flex items-center gap-2 overflow-visible"
-                      initial="rest"
-                      whileHover="hover"
-                      animate="rest"
-                    >
-                      <motion.span
-                        variants={{
-                          rest: { width: "2.5rem" },
-                          hover: { width: "100%" },
-                        }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="absolute left-0 top-0 h-full rounded-[999px] bg-white"
-                      />
-                      {/* 3 animated outlines */}
-                      <motion.span
-                        variants={{
-                          rest: { opacity: 0, scale: 1 },
-                          hover: { 
-                            opacity: 0.75, 
-                            scale: 1,
-                            transition: { delay: 0.3, duration: 0.2 }
-                          },
-                        }}
-                        className="absolute inset-[-4px] rounded-[999px] outline outline-1 outline-[#DBE0DE] pointer-events-none"
-                      />
-                      <motion.span
-                        variants={{
-                          rest: { opacity: 0, scale: 1 },
-                          hover: { 
-                            opacity: 0.5, 
-                            scale: 1,
-                            transition: { delay: 0.35, duration: 0.2 }
-                          },
-                        }}
-                        className="absolute inset-[-8px] rounded-[999px] outline outline-1 outline-[#DBE0DE] pointer-events-none"
-                      />
-                      <motion.span
-                        variants={{
-                          rest: { opacity: 0, scale: 1 },
-                          hover: { 
-                            opacity: 0.25, 
-                            scale: 1,
-                            transition: { delay: 0.4, duration: 0.2 }
-                          },
-                        }}
-                        className="absolute inset-[-12px] rounded-[999px] outline outline-1 outline-[#DBE0DE] pointer-events-none"
-                      />
-                      <div className="w-full flex items-center relative z-10 gap-2">
-                        <span className="w-10 h-10 flex justify-center items-center flex-shrink-0">
-                          <Mail className="w-4 h-4 text-zinc-600" />
-                        </span>
-                        <div className="relative flex-1 flex justify-center">
-                          <motion.span
-                            variants={{
-                              rest: { clipPath: "inset(0% 0% 0% 0%)" },
-                              hover: { clipPath: "inset(0% 0% 0% 100%)" },
-                            }}
-                            transition={{ duration: 0.2, ease: "easeOut" }}
-                            className="text-zinc-700 text-sm font-medium leading-6"
-                          >
-                            Email
-                          </motion.span>
-                          <motion.span
-                            variants={{
-                              rest: { clipPath: "inset(0% 100% 0% 0%)" },
-                              hover: { clipPath: "inset(0% 0% 0% 0%)" },
-                            }}
-                            transition={{ duration: 0.2, ease: "easeOut" }}
-                            className="absolute inset-0 flex items-center justify-center text-zinc-700 text-sm font-medium leading-6"
-                          >
-                            Let's talk!
-                          </motion.span>
-                        </div>
-                      </div>
-                    </motion.a>
-                  </div>
-                </div>
-              </footer>
+              <ContactFooter />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Sheet */}
-      <AnimatePresence>
-        {isSheetOpen && (
-          <>
-            {/* Backdrop with blur */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={() => setIsSheetOpen(false)}
-              className="fixed inset-0 z-40 "
-            />
+      {/* Profile Bottom Sheet */}
+      <BottomSheet isOpen={isSheetOpen} onClose={() => setIsSheetOpen(false)}>
+        <div className="px-8 pb-8">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl font-['Zodiak'] text-zinc-900 mb-6">
+              Numbers, convenience and design...
+            </h2>
+            <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
+              ....that's me in a nutshell. I enjoy making stuff that <span className="underline text-zinc-900"> brings joy into peoples daily lives.</span> (Possibly because my girlfriend always gets really annoyed at bad HMIs, so I'd like to do better.) I have also developed an unhealthy <span className="underline text-zinc-900">obsession with numbers and data</span>, so I guess that's what got me here.
+            </p>
+            <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
+              Fun aside, I like what I am doing and I enjoy growing in it. My quality standards are extremely high, and I enjoy to be experimental. At the moment I am the <span className="underline text-zinc-900">Design Lead</span> at Schaeffler medias. While my work mostly revolves around the normal tasks of a product designer, my responsibilities also include overseeing the entire design process from budgets to design strategy to guiding new designers. <span className="underline text-zinc-900">AI</span> has also become a huge part in my daily work and I am excited to see what other limits AI will push.
+            </p>
+            <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed">
+              Gaming was and still is a huge part of my life. So a dream of mine would be to <span className="underline text-zinc-900">design the interface for a game.</span> 
+            </p>
+          </div>
+        </div>
+      </BottomSheet>
+
+      {/* Project Bottom Sheets */}
+      <BottomSheet isOpen={openProject === "schaeffler"} onClose={() => setOpenProject(null)}>
+        <div className="px-4 sm:px-6 lg:px-8 pb-8">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl font-['Zodiak'] text-zinc-900 mb-8">
+              Schaeffler medias
+            </h2>
             
-            {/* Sheet */}
-            <motion.div
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ 
-                type: "spring", 
-                damping: 25, 
-                stiffness: 200 
-              }}
-              className="fixed bottom-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-2xl rounded-t-[32px] h-screen overflow-y-auto"
-            >
-              {/* Close button */}
-              <div className="sticky top-0 z-10 flex justify-center items-center pt-10 pb-8">
-                <button
-                  onClick={() => setIsSheetOpen(false)}
-                  className="group relative h-10 w-10 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-zinc-200 inline-flex justify-center items-center gap-2 bg-[#EDF0EF] transition overflow-visible cursor-pointer"
-                  aria-label="Close"
+            {/* 2-column layout: Description + Buttons */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              {/* Left column: Description */}
+              <div className="lg:col-span-2">
+                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
+                  medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers. As the <span className="underline text-zinc-900">Design Lead</span>, I've been responsible for shaping the user experience and design strategy of this platform.
+                </p>
+                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
+                  The platform serves thousands of B2B customers, providing them with an intuitive way to browse, configure, and order industrial products. My work here involves everything from user research and design strategy to pixel-perfect implementation and design system management.
+                </p>
+                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed">
+                  Working on medias has been an incredible journey in understanding complex B2B workflows and translating them into elegant, user-friendly interfaces.
+                </p>
+              </div>
+              
+              {/* Right column: Buttons */}
+              <div className="flex flex-col gap-3 lg:items-start">
+                <a
+                  href="https://medias.schaeffler.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full lg:w-auto"
                 >
                   <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-300 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
-                  <X className="relative z-10 w-4 h-4 text-zinc-600 transition-transform duration-300 ease-out group-hover:rotate-90" />
-                </button>
+                  <span className="relative z-10 text-zinc-700 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
+                    Website
+                  </span>
+                  <ExternalLink className="relative z-10 w-4 h-4 text-zinc-700" />
+                </a>
+                <a
+                  href="https://www.figma.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full lg:w-auto"
+                >
+                  <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-300 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
+                  <span className="relative z-10 text-zinc-700 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
+                    Figma
+                  </span>
+                  <ExternalLink className="relative z-10 w-4 h-4 text-zinc-700" />
+                </a>
               </div>
+            </div>
 
-              {/* Sheet content */}
-              <div className="px-8 pb-8">
-                <div className="max-w-2xl mx-auto">
-                  <h2 className="text-3xl font-['Zodiak'] text-zinc-900 mb-6">
-                    Numbers, convenience and design...
-                  </h2>
-                  <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
-                    ....that's me in a nutshell. I enjoy making stuff that <span className="underline text-zinc-900"> brings joy into peoples daily lives.</span> (Possibly because my girlfriend always gets really annoyed at bad HMIs, so I'd like to do better.) I have also developed an unhealthy <span className="underline text-zinc-900">obsession with numbers and data</span>, so I guess that's what got me here.
-                  </p>
-                  <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
-                    Fun aside, I like what I am doing and I enjoy growing in it. My quality standards are extremely high, and I enjoy to be experimental. At the moment I am the <span className="underline text-zinc-900">Design Lead</span> at Schaeffler medias. While my work mostly revolves around the normal tasks of a product designer, my responsibilities also include overseeing the entire design process from budgets to design strategy to guiding new designers. <span className="underline text-zinc-900">AI</span> has also become a huge part in my daily work and I am excited to see what other limits AI will push.
-                  </p>
-                  <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed">
-                    Gaming was and still is a huge part of my life. So a dream of mine would be to <span className="underline text-zinc-900">design the interface for a game.</span> 
-                  </p>
-                </div>
+            {/* Bento Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-fr">
+              {/* Image 1 - Large featured image, spans 2x2 on larger screens */}
+              <div className="col-span-2 sm:col-span-2 lg:col-span-2 row-span-2 aspect-square sm:aspect-[2/1] lg:aspect-square">
+                <img 
+                  src="/medias-solo.png" 
+                  alt="Schaeffler medias project 1" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+              {/* Image 2 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/medias-solo.png" 
+                  alt="Schaeffler medias project 2" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 3 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/medias-solo.png" 
+                  alt="Schaeffler medias project 3" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 4 - Wide image spanning 2 columns */}
+              <div className="col-span-2 sm:col-span-2 lg:col-span-2 row-span-1 aspect-[2/1]">
+                <img 
+                  src="/medias-solo.png" 
+                  alt="Schaeffler medias project 4" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 5 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/medias-solo.png" 
+                  alt="Schaeffler medias project 5" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 6 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/medias-solo.png" 
+                  alt="Schaeffler medias project 6" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 7 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/medias-solo.png" 
+                  alt="Schaeffler medias project 7" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 8 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/medias-solo.png" 
+                  alt="Schaeffler medias project 8" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </BottomSheet>
+
+      <BottomSheet isOpen={openProject === "beautified"} onClose={() => setOpenProject(null)}>
+        <div className="px-4 sm:px-6 lg:px-8 pb-8">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl font-['Zodiak'] text-zinc-900 mb-8">
+              Beautified.app
+            </h2>
+            
+            {/* 2-column layout: Description + Buttons */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              {/* Left column: Description */}
+              <div className="lg:col-span-2">
+                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
+                  Beautified.app is an innovative platform that transforms data into beautiful visuals through AI-powered conversations. This project represents my passion for <span className="underline text-zinc-900">combining design with AI technology</span> to create intuitive user experiences.
+                </p>
+                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
+                  The challenge was to make complex data visualization accessible to everyone, regardless of their technical background. By leveraging AI, users can simply describe what they want to see, and the platform generates professional, publication-ready visuals.
+                </p>
+                <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed">
+                  This project showcases how thoughtful design can bridge the gap between powerful technology and everyday usability, making data storytelling more accessible and enjoyable.
+                </p>
+              </div>
+              
+              {/* Right column: Buttons */}
+              <div className="flex flex-col gap-3 lg:items-start">
+                <a
+                  href="https://beautified.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full lg:w-auto"
+                >
+                  <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-300 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
+                  <span className="relative z-10 text-zinc-700 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
+                    Website
+                  </span>
+                  <ExternalLink className="relative z-10 w-4 h-4 text-zinc-700" />
+                </a>
+                <a
+                  href="https://www.figma.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full lg:w-auto"
+                >
+                  <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-300 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
+                  <span className="relative z-10 text-zinc-700 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
+                    Figma
+                  </span>
+                  <ExternalLink className="relative z-10 w-4 h-4 text-zinc-700" />
+                </a>
+              </div>
+            </div>
+
+            {/* Bento Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-fr">
+              {/* Image 1 - Large featured image, spans 2x2 on larger screens */}
+              <div className="col-span-2 sm:col-span-2 lg:col-span-2 row-span-2 aspect-square sm:aspect-[2/1] lg:aspect-square">
+                <img 
+                  src="/beautified-solo.png" 
+                  alt="Beautified.app project 1" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 2 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/beautified-solo.png" 
+                  alt="Beautified.app project 2" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 3 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/beautified-solo.png" 
+                  alt="Beautified.app project 3" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 4 - Wide image spanning 2 columns */}
+              <div className="col-span-2 sm:col-span-2 lg:col-span-2 row-span-1 aspect-[2/1]">
+                <img 
+                  src="/beautified-solo.png" 
+                  alt="Beautified.app project 4" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 5 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/beautified-solo.png" 
+                  alt="Beautified.app project 5" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 6 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/beautified-solo.png" 
+                  alt="Beautified.app project 6" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 7 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/beautified-solo.png" 
+                  alt="Beautified.app project 7" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              {/* Image 8 */}
+              <div className="col-span-1 row-span-1 aspect-square">
+                <img 
+                  src="/beautified-solo.png" 
+                  alt="Beautified.app project 8" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </BottomSheet>
     </main>
   );
 }
