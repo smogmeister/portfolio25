@@ -12,6 +12,7 @@ interface ProjectCardProps {
   textSecondaryColor: string;
   imagePosition?: "right-4" | "right-0";
   onClick?: () => void;
+  index?: number;
 }
 
 export default function ProjectCard({
@@ -25,6 +26,7 @@ export default function ProjectCard({
   textSecondaryColor,
   imagePosition = "right-4",
   onClick,
+  index = 0,
 }: ProjectCardProps) {
   return (
     <motion.article 
@@ -33,9 +35,13 @@ export default function ProjectCard({
         outlineColor: outlineColor,
         backgroundColor: bgColor,
       }}
-      initial="rest"
-      whileHover="hover"
-      animate="rest"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ 
+        duration: 0.8,
+        delay: index * 0.2,
+        ease: "easeOut"
+      }}
       onClick={onClick}
     >
       <div 
@@ -63,6 +69,9 @@ export default function ProjectCard({
           rest: { scale: 1.25, y: 0 },
           hover: { scale: 1.5, y: -20 }
         }}
+        initial="rest"
+        animate="rest"
+        whileHover="hover"
         transition={{ duration: 0.3, ease: "easeOut" }}
       />
     </motion.article>

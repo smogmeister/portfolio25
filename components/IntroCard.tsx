@@ -1,13 +1,24 @@
 "use client";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface IntroCardProps {
   onMoreClick: () => void;
+  index?: number;
 }
 
-export default function IntroCard({ onMoreClick }: IntroCardProps) {
+export default function IntroCard({ onMoreClick, index = 0 }: IntroCardProps) {
   return (
-    <section className="w-full lg:w-96 self-stretch p-8 bg-white rounded-[32px] outline outline-8 outline-offset-[-8px] outline-zinc-100 backdrop-blur-[20px] inline-flex flex-col justify-end items-start gap-4 overflow-hidden">
+    <motion.section 
+      className="w-full lg:w-96 self-stretch p-8 bg-white rounded-[32px] outline outline-8 outline-offset-[-8px] outline-zinc-100 backdrop-blur-[20px] inline-flex flex-col justify-end items-start gap-4 overflow-hidden"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ 
+        duration: 0.8,
+        delay: index * 0.2,
+        ease: "easeOut"
+      }}
+    >
       <img src="/avatar.png" alt="Jan Brinkmann" className="" />
 
       <div className="self-stretch flex flex-col justify-start items-start gap-6">
@@ -30,7 +41,7 @@ export default function IntroCard({ onMoreClick }: IntroCardProps) {
           <ArrowRight className="relative z-10 w-4 h-4 text-zinc-700 transition-transform duration-500 ease-out group-hover:-rotate-90" />
         </button>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

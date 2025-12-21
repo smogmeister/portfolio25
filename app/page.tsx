@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import IntroCard from "../components/IntroCard";
 import ProjectCard from "../components/ProjectCard";
 import ContactFooter from "../components/ContactFooter";
@@ -28,7 +29,7 @@ export default function Home() {
         <div className="w-full inline-flex flex-col justify-center items-center gap-4">
           <div className="w-full flex flex-col lg:flex-row justify-start items-stretch gap-4">
             {/* Left: Intro card */}
-            <IntroCard onMoreClick={() => setIsSheetOpen(true)} />
+            <IntroCard onMoreClick={() => setIsSheetOpen(true)} index={0} />
 
             {/* Right: Projects + Contacts */}
             <div className="flex-1 flex flex-col justify-start items-start gap-4 self-stretch">
@@ -46,6 +47,7 @@ export default function Home() {
                   textSecondaryColor="text-zinc-200"
                   imagePosition="right-4"
                   onClick={() => setOpenProject("schaeffler")}
+                  index={1}
                 />
 
                 {/* Beautified.app card */}
@@ -60,11 +62,12 @@ export default function Home() {
                   textSecondaryColor="text-zinc-700"
                   imagePosition="right-0"
                   onClick={() => setOpenProject("beautified")}
+                  index={2}
                 />
               </div>
 
               {/* Contact row */}
-              <ContactFooter />
+              <ContactFooter index={3} />
             </div>
           </div>
         </div>
@@ -74,18 +77,50 @@ export default function Home() {
       <BottomSheet isOpen={isSheetOpen} onClose={() => setIsSheetOpen(false)}>
         <div className="px-8 pb-8">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl font-['Zodiak'] text-zinc-900 mb-6">
+            <motion.h2 
+              className="text-3xl font-['Zodiak'] text-zinc-900 mb-6"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                opacity: { duration: 0.8, delay: 0, ease: "easeOut" },
+                y: { duration: 0.7, delay: 0, ease: "easeOut" }
+              }}
+            >
               Numbers, convenience and design...
-            </h2>
-            <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
+            </motion.h2>
+            <motion.p 
+              className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                opacity: { duration: 0.8, delay: 0.2, ease: "easeOut" },
+                y: { duration: 0.7, delay: 0.2, ease: "easeOut" }
+              }}
+            >
               ....that's me in a nutshell. I enjoy making stuff that <span className="underline text-zinc-900"> brings joy into peoples daily lives.</span> (Possibly because my girlfriend always gets really annoyed at bad HMIs, so I'd like to do better.) I have also developed an unhealthy <span className="underline text-zinc-900">obsession with numbers and data</span>, so I guess that's what got me here.
-            </p>
-            <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4">
+            </motion.p>
+            <motion.p 
+              className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                opacity: { duration: 0.8, delay: 0.35, ease: "easeOut" },
+                y: { duration: 0.7, delay: 0.35, ease: "easeOut" }
+              }}
+            >
               Fun aside, I like what I am doing and I enjoy growing in it. My quality standards are extremely high, and I enjoy to be experimental. At the moment I am the <span className="underline text-zinc-900">Design Lead</span> at Schaeffler medias. While my work mostly revolves around the normal tasks of a product designer, my responsibilities also include overseeing the entire design process from budgets to design strategy to guiding new designers. <span className="underline text-zinc-900">AI</span> has also become a huge part in my daily work and I am excited to see what other limits AI will push.
-            </p>
-            <p className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed">
+            </motion.p>
+            <motion.p 
+              className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                opacity: { duration: 0.8, delay: 0.5, ease: "easeOut" },
+                y: { duration: 0.7, delay: 0.5, ease: "easeOut" }
+              }}
+            >
               Gaming was and still is a huge part of my life. So a dream of mine would be to <span className="underline text-zinc-900">design the interface for a game.</span> 
-            </p>
+            </motion.p>
           </div>
         </div>
       </BottomSheet>
@@ -97,7 +132,7 @@ export default function Home() {
         title="Schaeffler medias"
         description={[
           <>
-            medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers. As the <span className="underline text-zinc-900">Design Lead</span>, I've been responsible for shaping the user experience and design strategy of this platform.
+            medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers. As the <span className="underline text-zinc-900">Design Lead</span>, I am responsible for shaping the user experience and design strategy of this platform.
           </>,
           <>
             The platform serves thousands of B2B customers, providing them with an intuitive way to browse, configure, and order industrial products. My work here involves everything from user research and design strategy to pixel-perfect implementation and design system management. Since I took over that role, the new design has partially been roled out. 
