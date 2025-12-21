@@ -72,7 +72,12 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
               damping: 25, 
               stiffness: 200 
             }}
-            className="fixed bottom-0 left-0 right-0 z-50 bg-white/40 backdrop-blur-3xl rounded-t-[32px] h-screen overflow-y-auto"
+            className="fixed bottom-0 left-0 right-0 z-50 bg-white/40 backdrop-blur-3xl rounded-t-[32px] overflow-y-auto"
+            style={{
+              height: '100dvh',
+              maxHeight: '100dvh',
+              paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+            }}
           >
             {/* Close button */}
             
@@ -97,7 +102,12 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
             </div>
             
             {/* Sheet content - positioned behind sticky header */}
-            <div className="relative z-10 -mt-[120px] pt-[160px]">
+            <div 
+              className="relative z-10 -mt-[120px] pt-[160px]"
+              style={{
+                paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 1rem)',
+              }}
+            >
               <AnimatePresence>
                 {isContentVisible && (
                   <div key={`content-${contentKey}`}>
