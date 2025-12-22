@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 interface ProjectCardProps {
   title: string;
@@ -28,6 +29,8 @@ export default function ProjectCard({
   onClick,
   index = 0,
 }: ProjectCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <motion.article 
       className="flex-1 p-8 rounded-[32px] outline outline-8 outline-offset-[-8px] backdrop-blur-[20px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer min-h-[340px]"
@@ -43,6 +46,8 @@ export default function ProjectCard({
         ease: "easeOut"
       }}
       onClick={onClick}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
     >
       <div 
         className="absolute inset-0 rounded-[32px] pointer-events-none z-20"
@@ -70,8 +75,7 @@ export default function ProjectCard({
           hover: { scale: 1.5, y: -20 }
         }}
         initial="rest"
-        animate="rest"
-        whileHover="hover"
+        animate={isHovered ? "hover" : "rest"}
         transition={{ duration: 0.3, ease: "easeOut" }}
       />
     </motion.article>

@@ -135,7 +135,7 @@ export default function Home() {
             medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers. As the <span className="underline text-zinc-900">Design Lead</span>, I am responsible for shaping the user experience and design strategy of this platform.
           </>,
           <>
-            The platform serves thousands of B2B customers, providing them with an intuitive way to browse, configure, and order industrial products. My work here involves everything from user research and design strategy to pixel-perfect implementation and design system management. Since I took over that role, the new design has partially been roled out. 
+            The platform serves thousands of B2B customers, providing them with an intuitive way to browse, configure, and order industrial products. I am resposible for the end-to-end design process. Since I took over that role, I have established a new design language, which has partially been roled out. 
           </>,
         ]}
         links={[
@@ -173,6 +173,14 @@ export default function Home() {
           { src: "/beautified-example-4.png", alt: "Beautified.app project 4" },
         ]}
       />
+
+      {/* Imprint link */}
+      <a 
+        href="https://beautified.app/imprint"
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-xs text-zinc-500 hover:text-zinc-700 hover:underline transition-colors z-20"
+      >
+        Imprint
+      </a>
     </main>
   );
 }
