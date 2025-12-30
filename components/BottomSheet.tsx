@@ -67,10 +67,10 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
-            transition={{ 
-              type: "spring", 
-              damping: 25, 
-              stiffness: 200 
+            transition={{
+              type: "tween",
+              duration: 0.45,
+              ease: "easeOut"
             }}
             className="fixed bottom-0 left-0 right-0 z-50 bg-white/40 backdrop-blur-3xl rounded-t-[32px] overflow-y-auto"
             style={{

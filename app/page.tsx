@@ -17,7 +17,6 @@ export default function Home() {
     <main className="min-h-screen w-full bg-[#fcfcf9] flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 font-['Plus_Jakarta_Sans'] relative">
       <div 
         className="absolute inset-0 opacity-30 bg-cover bg-center bg-no-repeat bg-fixed"
-        style={{ backgroundImage: "url('/bg_pattern.jpg')" }}
       />
       <div 
         className="absolute inset-0 pointer-events-none"
