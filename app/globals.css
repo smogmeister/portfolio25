@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+:root {
+  --primary: oklch(0.3720 0.0440 257.2870);
+}
+
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--primary);
+  color: white;
+}
