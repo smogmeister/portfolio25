@@ -37,7 +37,7 @@ export default function Home() {
                 {/* Schaeffler medias card */}
                 <ProjectCard
                   title="Schaeffler medias"
-                  description="medias is the B2B eCom platform of Schaeffler."
+                  description="medias is the B2B eCom platform of Schaeffler that houses highly technical products."
                   imageSrc="/medias-solo.png"
                   imageAlt="Schaeffler medias"
                   outlineColor="#AEBFB0"
