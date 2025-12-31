@@ -27,7 +27,7 @@ export default function IntroCard({ onMoreClick, index = 0 }: IntroCardProps) {
             Hi, I'm <span className="underline">Jan</span> <span className="text-zinc-500 text-sm ml-1">(ya-hn)</span>
           </p>
           <p className="self-stretch text-zinc-500 text-base font-normal font-['Plus_Jakarta_Sans'] leading-6">
-            I am a product designer that spent the last 5 years moving pixels to make people smile.
+            I earned my first money by designing YouTube banners 12 years ago. Somehow that turned into shaping design strategies and creating human-centered products that are used by tens of thousands.
           </p>
         </div>
 

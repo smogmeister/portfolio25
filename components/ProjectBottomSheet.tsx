@@ -163,6 +163,19 @@ export default function ProjectBottomSheet({
               />
             </motion.div>
           </div>
+
+          {/* Disclaimer text */}
+          <motion.p
+            className="text-zinc-500 text-xs font-['Plus_Jakarta_Sans'] mt-6 text-center"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              opacity: { duration: 0.8, delay: 0.95, ease: "easeOut" },
+              y: { duration: 0.7, delay: 0.95, ease: "easeOut" }
+            }}
+          >
+            The images above are a small sample size for visual reference. Check the production system or Figma for details.
+          </motion.p>
         </div>
       </div>
     </BottomSheet>

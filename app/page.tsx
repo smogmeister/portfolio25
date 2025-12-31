@@ -158,7 +158,7 @@ export default function Home() {
             Beautified.app is my side project. Here I experiment with different AI technologies and design approaches. Originally I started this because I wanted a cool tool to visualize some data for my presentations, but it also found a small group of users.
           </>,
           <>
-            Never the less, I do not see it as a Startup or SaaS, but more of a fun way to play and experiment with design and AI.
+            Never the less, I do not see it as a Startup or SaaS, but more of a fun way to play and experiment with design and AI. I use Tailwind and Shadcn and made it completly with help of AI.
           </>,
         ]}
         links={[
