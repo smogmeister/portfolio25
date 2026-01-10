@@ -23,7 +23,7 @@ export default function IntroCard({ onMoreClick, index = 0 }: IntroCardProps) {
 
       <div className="self-stretch flex flex-col justify-start items-start gap-6">
         <div className="self-stretch flex flex-col justify-start items-start gap-4">
-          <p className="self-stretch text-zinc-700 text-2xl font-['Zodiak'] leading-6">
+          <p className="self-stretch text-zinc-800 text-2xl font-['Zodiak'] leading-6">
             Hi, I'm <span className="underline">Jan</span> <span className="text-zinc-500 text-sm ml-1">(ya-hn)</span>
           </p>
           <p className="self-stretch text-zinc-500 text-base font-normal font-['Plus_Jakarta_Sans'] leading-6">

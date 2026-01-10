@@ -42,8 +42,8 @@ export default function Home() {
                   imageAlt="Schaeffler medias"
                   outlineColor="#AEBFB0"
                   bgColor="#5D7F62"
-                  textColor="text-zinc-50"
-                  textSecondaryColor="text-zinc-200"
+                  textColor="text-white"
+                  textSecondaryColor="text-zinc-100"
                   imagePosition="right-4"
                   onClick={() => setOpenProject("schaeffler")}
                   index={1}
@@ -57,7 +57,7 @@ export default function Home() {
                   imageAlt="Beautified.app"
                   outlineColor="#F3D4C9"
                   bgColor="#E8A994"
-                  textColor="text-zinc-900"
+                  textColor="text-zinc-800"
                   textSecondaryColor="text-zinc-700"
                   imagePosition="right-0"
                   onClick={() => setOpenProject("beautified")}
@@ -77,7 +77,7 @@ export default function Home() {
         <div className="px-8 pb-8">
           <div className="max-w-2xl mx-auto">
             <motion.h2 
-              className="text-3xl font-['Zodiak'] text-zinc-900 mb-6"
+              className="text-3xl font-['Zodiak'] text-zinc-800 mb-6"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ 
