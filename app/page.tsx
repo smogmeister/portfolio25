@@ -131,10 +131,10 @@ export default function Home() {
         title="Schaeffler medias"
         description={[
           <>
-            medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers. As the <span className="underline text-zinc-900">Design Lead</span>, I am responsible for shaping the user experience and design strategy of this platform.
+            medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers, that serves thousands of B2B customers daily. As the <span className="underline text-zinc-900">Design Lead</span>, I own the end-to-end design process and design strategy of this platform.
           </>,
           <>
-            The platform serves thousands of B2B customers, providing them with an intuitive way to browse, configure, and order industrial products. I am resposible for the end-to-end design process. Since I took over that role, I have established a new design language, which has partially been roled out. 
+            Since I took over that role in 2023, I have established a new design language, introduced a scalable design system, and added countless usability and conversion improvements, based on data. I am also responsible for making design/budget decisions to align design with business goals.
           </>,
         ]}
         links={[
