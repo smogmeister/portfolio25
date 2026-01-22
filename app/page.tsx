@@ -107,7 +107,7 @@ export default function Home() {
                 y: { duration: 0.7, delay: 0.35, ease: "easeOut" }
               }}
             >
-              Fun aside, I like what I am doing and I enjoy growing in it. My quality standards are extremely high, and I enjoy to be experimental. At the moment I am the <span className="underline text-zinc-900">Design Lead</span> at Schaeffler medias. While my work mostly revolves around the normal tasks of a product designer, my responsibilities also include overseeing the entire design process from budgets to design strategy to guiding new designers. <span className="underline text-zinc-900">AI</span> has also become a huge part in my daily work and I am excited to see what other limits AI will push.
+              Fun aside, curiosity and hunger to do cool stuff is what gets me motivated in the morning. For me, quality is in simplicity. Thats why I focus on making delightful software, where decisions are backed by data in combination with components that feel premium. At the moment I am the <span className="underline text-zinc-900">Design Lead</span> at Schaeffler medias. While I do spent most of my time designing, my responsibilities also include overseeing the entire design lifecycle from budgets and design strategy to shipping final designs and guiding new designers. <span className="underline text-zinc-900">AI</span> has also become a huge part in my daily work and I am excited to see what other limits AI will push.
             </motion.p>
             <motion.p 
               className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed"

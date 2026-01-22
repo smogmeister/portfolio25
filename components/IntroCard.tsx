@@ -27,7 +27,7 @@ export default function IntroCard({ onMoreClick, index = 0 }: IntroCardProps) {
             Hi, I'm <span className="underline">Jan</span> <span className="text-zinc-500 text-sm ml-1">(ya-hn)</span>
           </p>
           <p className="self-stretch text-zinc-500 text-base font-normal font-['Plus_Jakarta_Sans'] leading-6">
-            I started designing YouTube banners in 2013. Now I shape design strategies and create human-centered products for enterprises.
+            I shape design strategies and create human-centered products for startups and enterprises. Currently, I work as a Design Lead at Schaeffler and study for an MBA at IU.
           </p>
         </div>
 
