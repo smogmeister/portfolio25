@@ -52,7 +52,7 @@ export default function Home() {
                 {/* Beautified.app card */}
                 <ProjectCard
                   title="Beautified.app"
-                  description="Beautified. app can turn data into pretty visuals by chatting with AI."
+                  description="Beautified.app can turn data into pretty visuals by chatting with AI."
                   imageSrc="/beautified-solo.png"
                   imageAlt="Beautified.app"
                   outlineColor="#F3D4C9"
