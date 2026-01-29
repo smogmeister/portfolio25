@@ -1,0 +1,14 @@
+[
+  {
+    "ticker": "AMZN",
+    "shares": 1,
+    "id": "405b4f97-9b76-4f16-ab55-ff1fc4cd10a1",
+    "addedAt": "2026-01-27T17:58:40.280Z"
+  },
+  {
+    "ticker": "GOOG",
+    "shares": 1,
+    "id": "0c08af1b-b12f-48dd-a5db-4cb63f611b69",
+    "addedAt": "2026-01-27T17:59:05.336Z"
+  }
+]
