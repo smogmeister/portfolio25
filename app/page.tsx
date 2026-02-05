@@ -33,7 +33,7 @@ export default function Home() {
             {/* Right: Projects + Contacts */}
             <div className="flex-1 flex flex-col justify-start items-start gap-4 self-stretch">
               {/* Projects row */}
-              <div className="self-stretch flex flex-col md:flex-row justify-start items-stretch gap-4 flex-1">
+              <section className="self-stretch flex flex-col md:flex-row justify-start items-stretch gap-4 flex-1" aria-label="Featured projects">
                 {/* Schaeffler medias card */}
                 <ProjectCard
                   title="Schaeffler medias"
@@ -63,7 +63,7 @@ export default function Home() {
                   onClick={() => setOpenProject("beautified")}
                   index={2}
                 />
-              </div>
+              </section>
 
               {/* Contact row */}
               <ContactFooter index={3} />
