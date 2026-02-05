@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jan-brinkmann.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Jan Brinkmann - Design Lead & Product Designer",
+    default: "Jan Brinkmann - Product Designer",
     template: "%s | Jan Brinkmann",
   },
   description: "Design Lead at Schaeffler medias. Creating human-centered products, design strategies, and delightful software backed by data.",
@@ -42,20 +42,20 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Jan Brinkmann Portfolio",
-    title: "Jan Brinkmann - Design Lead & Product Designer",
+    title: "Jan Brinkmann - Product Designer",
     description: "Design Lead at Schaeffler medias. Creating human-centered products, design strategies, and delightful software backed by data.",
     images: [
       {
         url: `${siteUrl}/avatar.png`,
         width: 1200,
         height: 630,
-        alt: "Jan Brinkmann - Design Lead & Product Designer",
+        alt: "Jan Brinkmann - Product Designer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jan Brinkmann - Design Lead & Product Designer",
+    title: "Jan Brinkmann - Product Designer",
     description: "Design Lead at Schaeffler medias. Creating human-centered products, design strategies, and delightful software backed by data.",
     images: [`${siteUrl}/avatar.png`],
     creator: "@janbrinkmann",
