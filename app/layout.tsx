@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://janbrinkmann.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jan-brinkmann.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -74,7 +74,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://janbrinkmann.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jan-brinkmann.com";
 
   const personSchema = {
     "@context": "https://schema.org",
