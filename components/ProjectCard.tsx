@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { BlurFade } from "./ui/blur-fade";
 
 interface ProjectCardProps {
   title: string;
@@ -32,23 +33,17 @@ export default function ProjectCard({
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.article 
-      className="flex-1 p-8 rounded-[32px] outline outline-8 outline-offset-[-8px] backdrop-blur-[20px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer min-h-[340px]"
-      style={{
-        outlineColor: outlineColor,
-        backgroundColor: bgColor,
-      }}
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ 
-        duration: 0.8,
-        delay: index * 0.2,
-        ease: "easeOut"
-      }}
-      onClick={onClick}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
+    <BlurFade delay={index * 0.1} yOffset={-10} className="flex-1 flex flex-col">
+      <motion.article 
+        className="flex-1 p-8 rounded-[32px] outline outline-8 outline-offset-[-8px] backdrop-blur-[20px] flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer h-full"
+        style={{
+          outlineColor: outlineColor,
+          backgroundColor: bgColor,
+        }}
+        onClick={onClick}
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+      >
       <div 
         className="absolute inset-0 rounded-[32px] pointer-events-none z-20"
         style={{
@@ -79,6 +74,7 @@ export default function ProjectCard({
         transition={{ duration: 0.3, ease: "easeOut" }}
       />
     </motion.article>
+    </BlurFade>
   );
 }
 

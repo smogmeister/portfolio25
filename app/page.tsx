@@ -6,6 +6,7 @@ import ProjectCard from "../components/ProjectCard";
 import ContactFooter from "../components/ContactFooter";
 import BottomSheet from "../components/BottomSheet";
 import ProjectBottomSheet from "../components/ProjectBottomSheet";
+import { Highlighter } from "../components/ui/highlighter";
 
 type ProjectType = "profile" | "schaeffler" | "beautified" | null;
 
@@ -31,7 +32,7 @@ export default function Home() {
             <IntroCard onMoreClick={() => setIsSheetOpen(true)} index={0} />
 
             {/* Right: Projects + Contacts */}
-            <div className="flex-1 flex flex-col justify-start items-start gap-4 self-stretch">
+            <div className="flex-1 flex flex-col justify-start items-stretch gap-4 self-stretch">
               {/* Projects row */}
               <section className="self-stretch flex flex-col md:flex-row justify-start items-stretch gap-4 flex-1" aria-label="Featured projects">
                 {/* Schaeffler medias card */}
@@ -78,47 +79,51 @@ export default function Home() {
           <div className="max-w-2xl mx-auto">
             <motion.h2 
               className="text-3xl font-['Zodiak'] text-zinc-800 mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ 
-                opacity: { duration: 0.8, delay: 0, ease: "easeOut" },
-                y: { duration: 0.7, delay: 0, ease: "easeOut" }
+                opacity: { duration: 0.9, delay: 0, ease: [0.4, 0, 0.2, 1] },
+                filter: { duration: 0.9, delay: 0, ease: [0.4, 0, 0.2, 1] },
+                y: { duration: 0.7, delay: 0, ease: [0.4, 0, 0.2, 1] }
               }}
             >
               Numbers, convenience and design...
             </motion.h2>
             <motion.p 
               className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ 
-                opacity: { duration: 0.8, delay: 0.2, ease: "easeOut" },
-                y: { duration: 0.7, delay: 0.2, ease: "easeOut" }
+                opacity: { duration: 0.9, delay: 0.1, ease: [0.4, 0, 0.2, 1] },
+                filter: { duration: 0.9, delay: 0.1, ease: [0.4, 0, 0.2, 1] },
+                y: { duration: 0.7, delay: 0.1, ease: [0.4, 0, 0.2, 1] }
               }}
             >
-              ....that's me in a nutshell. I enjoy making stuff that <span className="underline text-zinc-900"> brings joy into peoples daily lives.</span> (Possibly because my girlfriend always gets really annoyed at bad HMIs, so I'd like to do better.) I have also developed an unhealthy <span className="underline text-zinc-900">obsession with numbers and data</span>, so I guess that's what got me here.
+              ....that's me in a nutshell. I enjoy making stuff that <Highlighter type="underline" animationDelay={1500} padding={1} color="oklch(0.372 0.044 257.287)" animationDuration={400} className="text-zinc-900"> brings joy into peoples daily lives.</Highlighter> (Possibly because my girlfriend always gets really annoyed at bad HMIs, so I'd like to do better.) I have also developed an unhealthy <Highlighter type="underline" animationDelay={2000} padding={1} color="oklch(0.372 0.044 257.287)" animationDuration={400} className="text-zinc-900">obsession with numbers and data</Highlighter>, so I guess that's what got me here.
             </motion.p>
             <motion.p 
               className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ 
-                opacity: { duration: 0.8, delay: 0.35, ease: "easeOut" },
-                y: { duration: 0.7, delay: 0.35, ease: "easeOut" }
+                opacity: { duration: 1.2, delay: 0.4, ease: [0.4, 0, 0.2, 1] },
+                filter: { duration: 1.2, delay: 0.4, ease: [0.4, 0, 0.2, 1] },
+                y: { duration: 0.9, delay: 0.4, ease: [0.4, 0, 0.2, 1] }
               }}
             >
-              Fun aside, curiosity and hunger to do cool stuff is what gets me motivated in the morning. For me, quality is in simplicity. Thats why I focus on making delightful software, where decisions are backed by data in combination with components that feel premium. At the moment I am the <span className="underline text-zinc-900">Design Lead</span> at Schaeffler medias. While I do spent most of my time designing, my responsibilities also include overseeing the entire design lifecycle from budgets and design strategy to shipping final designs and guiding new designers. <span className="underline text-zinc-900">AI</span> has also become a huge part in my daily work and I am excited to see what other limits AI will push.
+              Fun aside, curiosity and hunger to do cool stuff is what gets me motivated in the morning. For me, quality is in simplicity. Thats why I focus on making delightful software, where decisions are backed by data in combination with components that feel premium. At the moment I am the <Highlighter type="underline" animationDelay={2500} padding={1} color="oklch(0.372 0.044 257.287)" animationDuration={400} className="text-zinc-900">Design Lead</Highlighter> at Schaeffler medias. While I do spent most of my time designing, my responsibilities also include overseeing the entire design lifecycle from budgets and design strategy to shipping final designs and guiding new designers. <Highlighter type="underline" animationDelay={3000} padding={1} color="oklch(0.372 0.044 257.287)" animationDuration={400} className="text-zinc-900">AI</Highlighter> has also become a huge part in my daily work and I am excited to see what other limits AI will push.
             </motion.p>
             <motion.p 
               className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ 
-                opacity: { duration: 0.8, delay: 0.5, ease: "easeOut" },
-                y: { duration: 0.7, delay: 0.5, ease: "easeOut" }
+                opacity: { duration: 1.2, delay: 0.6, ease: [0.4, 0, 0.2, 1] },
+                filter: { duration: 1.2, delay: 0.6, ease: [0.4, 0, 0.2, 1] },
+                y: { duration: 0.9, delay: 0.6, ease: [0.4, 0, 0.2, 1] }
               }}
             >
-              Gaming was and still is a huge part of my life. So a dream of mine would be to <span className="underline text-zinc-900">design the interface for a game.</span> 
+              Gaming was and still is a huge part of my life. So a dream of mine would be to <Highlighter type="underline" animationDelay={3500} padding={1} color="oklch(0.372 0.044 257.287)" animationDuration={400} className="text-zinc-900" multiline={true}>design the interface for a game</Highlighter>.
             </motion.p>
           </div>
         </div>

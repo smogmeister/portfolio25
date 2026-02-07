@@ -1,30 +1,30 @@
 "use client";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { BlurFade } from "./ui/blur-fade";
+import { Highlighter } from "./ui/highlighter";
 
 interface IntroCardProps {
   onMoreClick: () => void;
   index?: number;
+  maxIndex?: number;
 }
 
-export default function IntroCard({ onMoreClick, index = 0 }: IntroCardProps) {
+export default function IntroCard({ onMoreClick, index = 0, maxIndex = 3 }: IntroCardProps) {
+  // Calculate when all cards have finished fading in
+  // Last card starts at: maxIndex * 0.1, duration is 1.2
+  const allCardsFadedInDelay = (maxIndex * 0.1) + 1.2;
+  
   return (
-    <motion.section 
-      className="w-full lg:w-96 self-stretch p-8 bg-white rounded-[32px] outline outline-8 outline-offset-[-8px] outline-zinc-100 backdrop-blur-[20px] inline-flex flex-col justify-end items-start gap-4 overflow-hidden"
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ 
-        duration: 0.8,
-        delay: index * 0.2,
-        ease: "easeOut"
-      }}
-    >
+    <BlurFade delay={index * 0.1} xOffset={-10} className="w-full lg:w-96 self-stretch">
+      <section 
+        className="w-full h-full p-8 bg-white rounded-[32px] outline outline-8 outline-offset-[-8px] outline-zinc-100 backdrop-blur-[20px] inline-flex flex-col justify-end items-start gap-4 overflow-hidden"
+      >
       <img src="/avatar.png" alt="Jan Brinkmann" className="" />
 
       <div className="self-stretch flex flex-col justify-start items-start gap-6">
         <div className="self-stretch flex flex-col justify-start items-start gap-4">
           <h1 className="self-stretch text-zinc-800 text-2xl font-['Zodiak'] leading-6">
-            Hi, I'm <span className="underline">Jan</span> <span className="text-zinc-500 text-sm ml-1">(ya-hn)</span>
+            Hi, I'm <Highlighter type="underline" animationDelay={allCardsFadedInDelay * 1000} padding={1} color="oklch(0.372 0.044 257.287)" animationDuration={400}>Jan</Highlighter> <span className="text-zinc-500 text-sm ml-1">(ya-hn)</span>
           </h1>
           <p className="self-stretch text-zinc-500 text-base font-normal font-['Plus_Jakarta_Sans'] leading-6">
             I shape design strategies and create human-centered products for startups and enterprises. Currently, I work as a Design Lead at Schaeffler.
@@ -41,7 +41,8 @@ export default function IntroCard({ onMoreClick, index = 0 }: IntroCardProps) {
           <ArrowRight className="relative z-10 w-4 h-4 text-zinc-700 transition-transform duration-500 ease-out group-hover:-rotate-90" />
         </button>
       </div>
-    </motion.section>
+    </section>
+    </BlurFade>
   );
 }
 

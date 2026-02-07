@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --primary: 59 130 246; /* blue-500 as default primary */
+  --primary: oklch(0.372 0.044 257.287);
 }
 
 ::selection {
-  background-color: rgb(var(--primary));
+  background-color: oklch(0.372 0.044 257.287);
   color: white;
 }
 
 ::-moz-selection {
-  background-color: rgb(var(--primary));
+  background-color: oklch(0.372 0.044 257.287);
   color: white;
 }

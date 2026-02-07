@@ -30,7 +30,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
       setContentKey(newKey);
       const timer = setTimeout(() => {
         setIsContentVisible(true);
-      }, 400); // Spring animation typically takes ~400ms
+      }, 200); // Start content animation earlier while drawer is still sliding up
       
       return () => {
         clearTimeout(timer);
@@ -54,23 +54,47 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
         <>
           {/* Backdrop with blur */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ 
+              opacity: 0,
+              filter: "blur(10px)"
+            }}
+            animate={{ 
+              opacity: 1,
+              filter: "blur(0px)"
+            }}
+            exit={{ 
+              opacity: 0,
+              filter: "blur(10px)"
+            }}
+            transition={{ 
+              duration: 0.3,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
             onClick={onClose}
             className="fixed inset-0 z-40 "
           />
           
           {/* Sheet */}
           <motion.div
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "100%" }}
+            initial={{ 
+              y: "100%",
+              opacity: 0,
+              filter: "blur(10px)"
+            }}
+            animate={{ 
+              y: 0,
+              opacity: 1,
+              filter: "blur(0px)"
+            }}
+            exit={{ 
+              y: "100%",
+              opacity: 0,
+              filter: "blur(10px)"
+            }}
             transition={{
               type: "tween",
               duration: 0.45,
-              ease: "easeOut"
+              ease: [0.25, 0.1, 0.25, 1]
             }}
             className="fixed bottom-0 left-0 right-0 z-50 bg-white/40 backdrop-blur-3xl rounded-t-[32px] overflow-y-auto"
             style={{
@@ -108,13 +132,11 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
                 paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 1rem)',
               }}
             >
-              <AnimatePresence>
-                {isContentVisible && (
-                  <div key={`content-${contentKey}`}>
-                    {children}
-                  </div>
-                )}
-              </AnimatePresence>
+              {isContentVisible && (
+                <div key={`content-${contentKey}`}>
+                  {children}
+                </div>
+              )}
             </div>
           </motion.div>
         </>

@@ -10,13 +10,21 @@ interface ContactFooterProps {
 export default function ContactFooter({ index = 0 }: ContactFooterProps) {
   return (
     <motion.footer 
-      className="self-stretch p-8 bg-zinc-100 rounded-[32px] outline outline-8 outline-offset-[-8px] outline-white backdrop-blur-[20px] flex flex-col justify-start items-start gap-2.5"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ 
-        duration: 0.8,
-        delay: index * 0.2,
-        ease: "easeOut"
+      className="self-stretch w-full p-8 bg-zinc-100 rounded-[32px] outline outline-8 outline-offset-[-8px] outline-white backdrop-blur-[20px] flex flex-col justify-start items-start gap-2.5"
+      initial={{
+        opacity: 0,
+        filter: "blur(10px)",
+        y: 10,
+      }}
+      animate={{
+        opacity: 1,
+        filter: "blur(0px)",
+        y: 0,
+      }}
+      transition={{
+        duration: 1.2,
+        delay: index * 0.1,
+        ease: [0.25, 0.1, 0.25, 1],
       }}
     >
       <div className="self-stretch flex flex-col justify-center items-center gap-6">

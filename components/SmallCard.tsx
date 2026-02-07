@@ -29,12 +29,12 @@ export default function SmallCard({
         outlineColor: outlineColor,
         backgroundColor: bgColor,
       }}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ 
-        duration: 0.8,
-        delay: index * 0.2,
-        ease: "easeOut"
+        duration: 1.2,
+        delay: index * 0.1,
+        ease: [0.25, 0.1, 0.25, 1]
       }}
     >
       <div 
