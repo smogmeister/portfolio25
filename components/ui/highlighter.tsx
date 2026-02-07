@@ -1,12 +1,21 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { annotate, type RoughAnnotationConfig } from "rough-notation";
+import { annotate } from "rough-notation";
 import { cn } from "@/lib/utils";
+
+type AnnotationType = 
+  | "underline" 
+  | "box" 
+  | "circle" 
+  | "highlight" 
+  | "strike-through" 
+  | "crossed-off" 
+  | "bracket";
 
 interface HighlighterProps extends React.HTMLAttributes<HTMLElement> {
   as?: React.ElementType;
-  type?: RoughAnnotationConfig["type"];
+  type?: AnnotationType;
   color?: string;
   strokeWidth?: number;
   padding?: number;
