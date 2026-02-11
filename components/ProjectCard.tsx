@@ -35,7 +35,7 @@ export default function ProjectCard({
   return (
     <BlurFade delay={index * 0.1} yOffset={-10} className="flex-1 flex flex-col">
       <motion.article 
-        className="flex-1 p-8 rounded-[32px] outline outline-8 outline-offset-[-8px] backdrop-blur-[20px] flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer h-full"
+        className="flex-1 p-8 rounded-[32px] outline outline-8 outline-offset-[-8px] backdrop-blur-[20px] flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer h-full min-h-[380px] md:min-h-0"
         style={{
           outlineColor: outlineColor,
           backgroundColor: bgColor,
@@ -51,7 +51,7 @@ export default function ProjectCard({
           outlineOffset: "-8px",
         }}
       />
-      <div className="self-stretch flex flex-col justify-start items-start gap-6 relative z-10">
+      <div className="self-stretch flex flex-col justify-start items-start gap-6 relative z-10 pb-32 md:pb-0">
         <div className="self-stretch flex flex-col justify-start items-start gap-4">
           <h2 className={`self-stretch ${textColor} text-2xl font-['Zodiak'] leading-6`}>
             {title}
