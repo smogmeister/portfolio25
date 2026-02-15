@@ -58,8 +58,8 @@ export default function Home() {
                   imageAlt="Beautified.app"
                   outlineColor="#F3D4C9"
                   bgColor="#E8A994"
-                  textColor="text-zinc-800"
-                  textSecondaryColor="text-zinc-700"
+                  textColor="text-foreground"
+                  textSecondaryColor="text-foreground/70"
                   imagePosition="right-0"
                   onClick={() => setOpenProject("beautified")}
                   index={2}

@@ -28,7 +28,7 @@ export default function ContactFooter({ index = 0 }: ContactFooterProps) {
       }}
     >
       <motion.footer 
-        className="w-full h-full p-8 bg-card rounded-[32px] border border-border/50 outline outline-12 outline-offset-[-12px] outline-border/50 flex flex-col justify-start items-start gap-2.5"
+        className="w-full h-full p-8 bg-card rounded-[32px] border border-border/50 outline outline-12 outline-offset-[-12px] outline-white flex flex-col justify-start items-start gap-2.5"
       >
       <div className="self-stretch flex flex-col justify-center items-center gap-6">
         <div className="inline-flex justify-start items-start gap-4">

@@ -18,7 +18,7 @@ export default function IntroCard({ onMoreClick, index = 0, maxIndex = 3 }: Intr
     <BlurFade delay={index * 0.1} xOffset={-10} className="w-full lg:w-96 self-stretch">
       <div className="w-full h-full rounded-[32px] border border-border/50 p-[1px]">
         <section 
-          className="w-full h-full p-8 bg-card rounded-[32px] border border-border/50 outline outline-12 outline-offset-[-12px] outline-border/50 inline-flex flex-col justify-end items-start gap-4 overflow-hidden"
+          className="w-full h-full p-8 bg-card rounded-[32px] border border-border/50 outline outline-12 outline-offset-[-12px] outline-white inline-flex flex-col justify-end items-start gap-4 overflow-hidden"
         >
       <img src="/avatar.png" alt="Jan Brinkmann" className="" />
 
