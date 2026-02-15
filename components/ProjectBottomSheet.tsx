@@ -35,7 +35,7 @@ export default function ProjectBottomSheet({
         <div className="max-w-2xl mx-auto">
           <motion.h2 
             key="title"
-            className="text-3xl font-['Zodiak'] text-zinc-900 mb-8"
+            className="text-3xl font-['Zodiak'] text-foreground mb-8"
             initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
             animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             transition={{ 
@@ -54,7 +54,7 @@ export default function ProjectBottomSheet({
               {description.map((paragraph, index) => (
                 <motion.p
                   key={index}
-                  className="text-zinc-600 font-['Plus_Jakarta_Sans'] leading-relaxed mb-4 last:mb-0"
+                  className="text-muted-foreground font-['Plus_Jakarta_Sans'] leading-relaxed mb-4 last:mb-0"
                   initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
                   animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                   transition={{ 
@@ -87,13 +87,13 @@ export default function ProjectBottomSheet({
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full "
+                    className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-border inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full "
                   >
-                    <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-500 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
-                    <span className="relative z-10 text-zinc-700 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
+                    <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-500 ease-out shadow-[0_0_0_0px_color-mix(in_oklch,var(--border)_50%,transparent)] group-hover:shadow-[0_0_0_4px_color-mix(in_oklch,var(--border)_50%,transparent)]" />
+                    <span className="relative z-10 text-accent-foreground text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
                       {link.label}
                     </span>
-                    <ExternalLink className="relative z-10 w-4 h-4 text-zinc-700" />
+                    <ExternalLink className="relative z-10 w-4 h-4 text-accent-foreground" />
                   </a>
                 </motion.div>
               ))}
@@ -174,7 +174,7 @@ export default function ProjectBottomSheet({
 
           {/* Disclaimer text */}
           <motion.p
-            className="text-zinc-500 text-xs font-['Plus_Jakarta_Sans'] mt-6 text-center"
+            className="text-muted-foreground text-xs font-['Plus_Jakarta_Sans'] mt-6 text-center"
             initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
             animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             transition={{ 

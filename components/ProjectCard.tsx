@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { BlurFade } from "./ui/blur-fade";
 
 interface ProjectCardProps {
   title: string;
@@ -33,9 +32,18 @@ export default function ProjectCard({
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <BlurFade delay={index * 0.1} yOffset={-10} className="flex-1 flex flex-col">
+    <motion.div
+      className="flex-1 rounded-[32px] border border-border/50 p-[1px]"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ 
+        duration: 0.8,
+        delay: index * 0.2,
+        ease: "easeOut"
+      }}
+    >
       <motion.article 
-        className="flex-1 p-8 rounded-[32px] outline outline-8 outline-offset-[-8px] backdrop-blur-[20px] flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer h-full min-h-[380px] md:min-h-0"
+        className="w-full h-full p-8 rounded-[32px] border border-border/50 outline outline-12 outline-offset-[-12px] backdrop-blur-[20px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer min-h-[340px]"
         style={{
           outlineColor: outlineColor,
           backgroundColor: bgColor,
@@ -47,11 +55,11 @@ export default function ProjectCard({
       <div 
         className="absolute inset-0 rounded-[32px] pointer-events-none z-20"
         style={{
-          outline: `8px solid ${outlineColor}`,
-          outlineOffset: "-8px",
+          outline: `12px solid ${outlineColor}`,
+          outlineOffset: "-12px",
         }}
       />
-      <div className="self-stretch flex flex-col justify-start items-start gap-6 relative z-10 pb-32 md:pb-0">
+      <div className="self-stretch flex flex-col justify-start items-start gap-6 relative z-10">
         <div className="self-stretch flex flex-col justify-start items-start gap-4">
           <h2 className={`self-stretch ${textColor} text-2xl font-['Zodiak'] leading-6`}>
             {title}
@@ -74,7 +82,7 @@ export default function ProjectCard({
         transition={{ duration: 0.3, ease: "easeOut" }}
       />
     </motion.article>
-    </BlurFade>
+    </motion.div>
   );
 }
 

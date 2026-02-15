@@ -23,25 +23,32 @@ export default function SmallCard({
   children,
 }: SmallCardProps) {
   return (
-    <motion.article 
-      className="flex-[0.5] p-8 rounded-[32px] outline outline-8 outline-offset-[-8px] backdrop-blur-[20px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative h-full"
+    <motion.div
+      className="flex-[0.5] rounded-[32px] border p-[1px]"
       style={{
-        outlineColor: outlineColor,
-        backgroundColor: bgColor,
+        borderColor: outlineColor,
       }}
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ 
-        duration: 1.2,
-        delay: index * 0.1,
-        ease: [0.25, 0.1, 0.25, 1]
+        duration: 0.8,
+        delay: index * 0.2,
+        ease: "easeOut"
       }}
     >
+      <motion.article 
+        className="w-full h-full p-8 rounded-[32px] border outline outline-12 outline-offset-[-12px] backdrop-blur-[20px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative h-full"
+        style={{
+          outlineColor: outlineColor,
+          backgroundColor: bgColor,
+          borderColor: outlineColor,
+        }}
+      >
       <div 
         className="absolute inset-0 rounded-[32px] pointer-events-none z-20"
         style={{
-          outline: `8px solid ${outlineColor}`,
-          outlineOffset: "-8px",
+          outline: `12px solid ${outlineColor}`,
+          outlineOffset: "-12px",
         }}
       />
       <div className="self-stretch flex flex-col justify-start items-start gap-6 relative z-10">
@@ -63,5 +70,6 @@ export default function SmallCard({
         )}
       </div>
     </motion.article>
+    </motion.div>
   );
 }

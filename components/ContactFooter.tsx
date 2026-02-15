@@ -9,8 +9,8 @@ interface ContactFooterProps {
 
 export default function ContactFooter({ index = 0 }: ContactFooterProps) {
   return (
-    <motion.footer 
-      className="self-stretch w-full p-8 bg-zinc-100 rounded-[32px] outline outline-8 outline-offset-[-8px] outline-white backdrop-blur-[20px] flex flex-col justify-start items-start gap-2.5"
+    <motion.div
+      className="self-stretch w-full rounded-[32px] border border-border/50 p-[1px]"
       initial={{
         opacity: 0,
         filter: "blur(10px)",
@@ -27,6 +27,9 @@ export default function ContactFooter({ index = 0 }: ContactFooterProps) {
         ease: [0.25, 0.1, 0.25, 1],
       }}
     >
+      <motion.footer 
+        className="w-full h-full p-8 bg-card rounded-[32px] border border-border/50 outline outline-12 outline-offset-[-12px] outline-border/50 flex flex-col justify-start items-start gap-2.5"
+      >
       <div className="self-stretch flex flex-col justify-center items-center gap-6">
         <div className="inline-flex justify-start items-start gap-4">
           <ContactButton
@@ -46,6 +49,7 @@ export default function ContactFooter({ index = 0 }: ContactFooterProps) {
         </div>
       </div>
     </motion.footer>
+    </motion.div>
   );
 }
 

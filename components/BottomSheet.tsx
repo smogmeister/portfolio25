@@ -11,7 +11,6 @@ interface BottomSheetProps {
 
 export default function BottomSheet({ isOpen, onClose, children }: BottomSheetProps) {
   const [isContentVisible, setIsContentVisible] = useState(false);
-  const [contentKey, setContentKey] = useState(0);
 
   // Lock body scroll when bottom sheet is open
   useEffect(() => {
@@ -26,8 +25,6 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
       
       // Delay content animation until sheet opening animation completes
       setIsContentVisible(false);
-      const newKey = Date.now(); // Use timestamp to ensure unique key
-      setContentKey(newKey);
       const timer = setTimeout(() => {
         setIsContentVisible(true);
       }, 200); // Start content animation earlier while drawer is still sliding up
@@ -96,7 +93,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
               duration: 0.45,
               ease: [0.25, 0.1, 0.25, 1]
             }}
-            className="fixed bottom-0 left-0 right-0 z-50 bg-white/40 backdrop-blur-3xl rounded-t-[32px] overflow-y-auto"
+            className="fixed bottom-0 left-0 right-0 z-50 bg-background/40 backdrop-blur-3xl rounded-t-[32px] overflow-y-auto"
             style={{
               height: '100dvh',
               maxHeight: '100dvh',
@@ -117,11 +114,11 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
               
               <button
                 onClick={onClose}
-                className="group relative h-10 w-10 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-zinc-200 inline-flex justify-center items-center gap-2 bg-[#EDF0EF] transition overflow-visible cursor-pointer z-10 pointer-events-auto"
+                className="group relative h-10 w-10 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-border inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer z-10 pointer-events-auto"
                 aria-label="Close"
               >
-                <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-500 ease-out shadow-[0_0_0_0px_rgba(229,231,235,0.5)] group-hover:shadow-[0_0_0_4px_rgba(229,231,235,0.5)]" />
-                <X className="relative z-10 w-4 h-4 text-zinc-600 transition-transform duration-500 ease-out group-hover:rotate-90" />
+                <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-500 ease-out shadow-[0_0_0_0px_color-mix(in_oklch,var(--border)_50%,transparent)] group-hover:shadow-[0_0_0_4px_color-mix(in_oklch,var(--border)_50%,transparent)]" />
+                <X className="relative z-10 w-4 h-4 text-accent-foreground transition-transform duration-500 ease-out group-hover:rotate-90" />
               </button>
             </div>
             
@@ -133,7 +130,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
               }}
             >
               {isContentVisible && (
-                <div key={`content-${contentKey}`}>
+                <div>
                   {children}
                 </div>
               )}

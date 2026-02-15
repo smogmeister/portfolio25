@@ -137,7 +137,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className="antialiased bg-neutral-50 text-neutral-900">
+      <body className="antialiased bg-background text-neutral-900">
         {children}
       </body>
     </html>
