@@ -433,7 +433,7 @@ export default function ProjectCard({
             }}
             style={{ 
               height: "180px",
-              zIndex: 0,
+              zIndex: 2,
               transform: "translateZ(0)",
             }}
           >
