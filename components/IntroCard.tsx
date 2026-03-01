@@ -39,7 +39,7 @@ export default function IntroCard({ onMoreClick, index = 0, maxIndex = 3 }: Intr
       <div className="self-stretch flex flex-col justify-start items-start gap-6">
         <div className="self-stretch flex flex-col justify-start items-start gap-4">
           <h1 className="self-stretch text-foreground text-2xl font-['Zodiak'] leading-6">
-            Hi, I'm <Highlighter type="underline" animationDelay={allCardsFadedInDelay * 1000} padding={0} color="var(--primary)" animationDuration={400} verticalOffset={-2}>Jan</Highlighter> <span className="text-muted-foreground text-sm ml-1">(ya-hn)</span>
+            Hi, I'm <Highlighter type="underline" animationDelay={allCardsFadedInDelay * 1000} padding={0} color="var(--primary)" animationDuration={400} verticalOffset={0}>Jan</Highlighter> <span className="text-muted-foreground text-sm ml-1">(ya-hn)</span>
           </h1>
           <p className="self-stretch text-muted-foreground text-base font-normal font-['Plus_Jakarta_Sans'] leading-6">
             I shape design strategies and create human-centered products for startups and enterprises. Currently, I work as a Design Lead at Schaeffler.

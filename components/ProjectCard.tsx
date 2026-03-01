@@ -207,7 +207,7 @@ export default function ProjectCard({
       }}
     >
       <motion.article 
-        className="group w-full h-full p-8 bg-card rounded-[32px] border border-border/50 outline outline-12 outline-offset-[-12px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer min-h-[340px]"
+        className="group w-full h-full p-8 bg-card rounded-[32px] border border-border/50 outline outline-12 outline-offset-[-12px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer min-h-[360px]"
         style={{
           outlineColor: "var(--card-outline)",
           backgroundColor: "var(--card)",
@@ -276,20 +276,22 @@ export default function ProjectCard({
                 initial={isMobile ? {
                   opacity: 1,
                   scale: 1,
-                  x: '0%',
-                  y: '0px',
                   filter: 'blur(0px) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))',
                 } : false}
-                animate={{
+                animate={isMobile ? {
+                  opacity: 1,
+                  scale: 1,
+                  filter: 'blur(0px) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))',
+                } : {
                   opacity: shouldShow ? 1 : 0,
                   scale: shouldShow ? 1 : 0.3,
-                  x: isMobile ? '0%' : (shouldShow ? chart.moveLeft : '0%'),
-                  y: isMobile ? '0px' : (shouldShow ? chart.moveUp : '0px'),
+                  x: shouldShow ? chart.moveLeft : '0%',
+                  y: shouldShow ? chart.moveUp : '0px',
                   filter: shouldShow ? 'blur(0px) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))' : 'blur(8px)',
                 }}
-                transition={{
-                  duration: isMobile ? 0 : 0.3,
-                  delay: isMobile ? 0 : (shouldShow ? chart.delay : 0),
+                transition={isMobile ? {} : {
+                  duration: 0.3,
+                  delay: shouldShow ? chart.delay : 0,
                   ease: "easeOut",
                 }}
                 style={{
