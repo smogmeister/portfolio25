@@ -267,6 +267,22 @@ export default function ProjectCard({
           {/* Chart SVGs in random layout */}
           {chartPositions.map((chart, i) => {
             const shouldShow = isMobile || isHovered;
+            const isPieChart = chart.src === "/pie.svg";
+            const isBarChart = chart.src === "/bar.svg";
+            
+            // Adjust left position for mobile to keep pie and bar charts more centered
+            let mobileLeft = chart.finalLeft;
+            if (isMobile && (isPieChart || isBarChart)) {
+              const leftPercent = parseFloat(chart.finalLeft.replace('%', ''));
+              if (isPieChart) {
+                // Constrain pie chart to 45-52% range (more to the right)
+                mobileLeft = `${Math.max(45, Math.min(52, leftPercent))}%`;
+              } else if (isBarChart) {
+                // Constrain bar chart to 35-65% range (more centered)
+                mobileLeft = `${Math.max(35, Math.min(65, leftPercent))}%`;
+              }
+            }
+            
             return (
               <motion.img
                 key={chart.src}
@@ -296,7 +312,7 @@ export default function ProjectCard({
                 }}
                 style={{
                   bottom: isMobile ? chart.finalBottom : chart.startBottom,
-                  left: isMobile ? chart.finalLeft : chart.startLeft,
+                  left: isMobile ? mobileLeft : chart.startLeft,
                   width: chart.width,
                   rotate: chart.rotation,
                   zIndex: 25 + i,
@@ -341,6 +357,15 @@ export default function ProjectCard({
               const shouldShow = isMobile || isHovered;
               const isCardHovered = hoveredCardIndex === i;
               const IconComponent = card.icon;
+              
+              // Adjust bottom position for mobile to move cards slightly higher
+              let mobileBottom = card.finalBottom;
+              if (isMobile) {
+                const bottomPx = parseFloat(card.finalBottom.replace('px', ''));
+                // Move cards up by 15px on mobile
+                mobileBottom = `${bottomPx + 15}px`;
+              }
+              
               return (
                 <motion.div
                   key={card.text}
@@ -375,7 +400,7 @@ export default function ProjectCard({
                     ease: "easeOut",
                   }}
                   style={{
-                    bottom: isMobile ? card.finalBottom : card.startBottom,
+                    bottom: isMobile ? mobileBottom : card.startBottom,
                     rotate: card.rotation,
                     transformOrigin: 'center center',
                     zIndex: isCardHovered ? 30 : 25 + i,
