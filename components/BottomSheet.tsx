@@ -68,7 +68,10 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
               ease: [0.25, 0.1, 0.25, 1]
             }}
             onClick={onClose}
-            className="fixed inset-0 z-40 "
+            className="fixed inset-0 z-40"
+            style={{
+              backgroundColor: `color-mix(in oklch, var(--background) calc(var(--bottomsheet-backdrop-opacity) * 100%), transparent)`,
+            }}
           />
           
           {/* Sheet */}
@@ -93,40 +96,48 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
               duration: 0.45,
               ease: [0.25, 0.1, 0.25, 1]
             }}
-            className="fixed bottom-0 left-0 right-0 z-50 bg-background/40 backdrop-blur-3xl rounded-t-[32px] overflow-y-auto"
+            className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-3xl rounded-t-[32px] overflow-y-auto"
             style={{
               height: '100dvh',
               maxHeight: '100dvh',
               paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+              backgroundColor: `color-mix(in oklch, var(--background) calc(var(--bottomsheet-sheet-opacity) * 100%), transparent)`,
             }}
           >
-            {/* Close button */}
-            
-            <div className="sticky top-0 z-50 flex justify-center items-center pt-6 sm:pt-10 pb-6 sm:pb-8">
-              {/* Enhanced gradient blur overlay - stronger blur for text/buttons */}
+            {/* Close button header */}
+            <div 
+              className="sticky top-0 z-50 flex justify-center items-center pb-12 pt-12"
+              style={{
+                paddingTop: 'max(env(safe-area-inset-top, 0px) + 2.5rem, 2.5rem)',
+              }}
+            >
+              {/* Gradient blur overlay for header */}
               <div 
-                className="absolute inset-0 -top-6 sm:-top-10 -bottom-12 sm:-bottom-16 backdrop-blur-md bg-white/30 pointer-events-none"
+                className="absolute inset-0 -top-2 -bottom-2 backdrop-blur-lg pointer-events-none"
                 style={{
-                  maskImage: 'linear-gradient(to bottom, black 0%, black 60%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 60%, transparent 100%)',
+                  background: 'linear-gradient(to top, transparent 0%, var(--background) 100%)',
+                  maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
                 }}
               />
               
-              <button
+              <motion.button
                 onClick={onClose}
-                className="group relative h-10 w-10 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-border inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer z-10 pointer-events-auto"
+                className="group relative h-10 w-10 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-border inline-flex justify-center items-center bg-card/70 hover:bg-card transition-colors overflow-visible cursor-pointer z-10 pointer-events-auto"
                 aria-label="Close"
+                whileTap={{ scale: 0.96 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
               >
                 <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-500 ease-out shadow-[0_0_0_0px_color-mix(in_oklch,var(--border)_50%,transparent)] group-hover:shadow-[0_0_0_4px_color-mix(in_oklch,var(--border)_50%,transparent)]" />
                 <X className="relative z-10 w-4 h-4 text-accent-foreground transition-transform duration-500 ease-out group-hover:rotate-90" />
-              </button>
+              </motion.button>
             </div>
             
-            {/* Sheet content - positioned behind sticky header */}
+            {/* Sheet content */}
             <div 
-              className="relative z-10 -mt-[120px] pt-[160px]"
+              className="relative z-10"
               style={{
-                paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 1rem)',
+                paddingBottom: 'max(env(safe-area-inset-bottom, 0px) + 1rem, 1rem)',
               }}
             >
               {isContentVisible && (
@@ -135,6 +146,18 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
                 </div>
               )}
             </div>
+            
+            {/* Bottom fade and blur overlay */}
+            <div 
+              className="sticky bottom-0 left-0 right-0 z-40 h-32 pointer-events-none"
+              style={{
+                background: 'linear-gradient(to top, var(--background) 0%, transparent 100%)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                maskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
+              }}
+            />
           </motion.div>
         </>
       )}

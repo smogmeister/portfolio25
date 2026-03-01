@@ -22,6 +22,7 @@ interface HighlighterProps extends React.HTMLAttributes<HTMLElement> {
   multiline?: boolean;
   animationDuration?: number;
   animationDelay?: number;
+  verticalOffset?: number;
 }
 
 export function Highlighter({
@@ -33,6 +34,7 @@ export function Highlighter({
   multiline = false,
   animationDuration = 800,
   animationDelay = 0,
+  verticalOffset = 0,
   className,
   children,
   ...props
@@ -51,8 +53,29 @@ export function Highlighter({
       animationDuration,
     });
 
+    const adjustPosition = () => {
+      if (verticalOffset !== 0 && elementRef.current) {
+        const parent = elementRef.current.parentElement;
+        if (parent) {
+          // rough-notation creates an SVG that's positioned absolutely
+          // Find it by checking all SVGs in the parent
+          const svgs = Array.from(parent.querySelectorAll('svg'));
+          const annotationSvg = svgs.find(svg => {
+            const style = window.getComputedStyle(svg);
+            return style.position === 'absolute' && svg.parentElement === parent;
+          }) as SVGElement | undefined;
+          
+          if (annotationSvg) {
+            annotationSvg.style.transform = `translateY(${verticalOffset}px)`;
+          }
+        }
+      }
+    };
+
     const timeoutId = setTimeout(() => {
       annotation.show();
+      // Adjust position after annotation is shown
+      setTimeout(adjustPosition, 100);
     }, animationDelay);
 
     return () => {
@@ -67,6 +90,7 @@ export function Highlighter({
     multiline,
     animationDuration,
     animationDelay,
+    verticalOffset,
   ]);
 
   return (

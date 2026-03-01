@@ -21,9 +21,7 @@ export default function Home() {
       />
       <div 
         className="absolute inset-0 pointer-events-none"
-        style={{ 
-          background: `radial-gradient(ellipse at center, transparent 10%, #fcfcf9 100%)`
-        }}
+        
       />
       <div className="w-full max-w-[1200px] relative z-10">
         <div className="w-full inline-flex flex-col justify-center items-center gap-4">
@@ -38,14 +36,8 @@ export default function Home() {
                 {/* Schaeffler medias card */}
                 <ProjectCard
                   title="Schaeffler medias"
-                  description="medias is the B2B eCom platform of Schaeffler that houses highly technical products."
-                  imageSrc="/medias-solo.png"
-                  imageAlt="Schaeffler medias"
-                  outlineColor="#AEBFB0"
-                  bgColor="#5D7F62"
-                  textColor="text-white"
-                  textSecondaryColor="text-zinc-100"
-                  imagePosition="right-4"
+                  description="Owning the design of the entire Schaeffler B2B eCom platform."
+                  projectType="schaeffler"
                   onClick={() => setOpenProject("schaeffler")}
                   index={1}
                 />
@@ -53,14 +45,8 @@ export default function Home() {
                 {/* Beautified.app card */}
                 <ProjectCard
                   title="Beautified.app"
-                  description="Beautified.app can turn data into pretty visuals by chatting with AI."
-                  imageSrc="/beautified-solo.png"
-                  imageAlt="Beautified.app"
-                  outlineColor="#F3D4C9"
-                  bgColor="#E8A994"
-                  textColor="text-foreground"
-                  textSecondaryColor="text-foreground/70"
-                  imagePosition="right-0"
+                  description="I created Beautified.app to visualize data and experiment with AI."
+                  projectType="beautified"
                   onClick={() => setOpenProject("beautified")}
                   index={2}
                 />
@@ -181,7 +167,7 @@ export default function Home() {
       {/* Imprint link */}
       <a 
         href="https://beautified.app/imprint"
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-xs text-zinc-500 hover:text-zinc-700 hover:underline transition-colors z-20"
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-xs text-muted-foreground hover:text-foreground hover:underline transition-colors z-20"
       >
         Imprint
       </a>

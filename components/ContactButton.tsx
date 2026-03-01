@@ -24,6 +24,7 @@ export default function ContactButton({
       style={{ minWidth }}
       initial="rest"
       whileHover="hover"
+      whileTap={{ scale: 0.96 }}
       animate="rest"
     >
       {/* animated white background */}

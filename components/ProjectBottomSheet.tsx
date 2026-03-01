@@ -83,18 +83,20 @@ export default function ProjectBottomSheet({
                   layout={false}
                   className="w-full"
                 >
-                  <a
+                  <motion.a
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-border inline-flex justify-center items-center gap-2 bg-white/70 hover:bg-white transition overflow-visible cursor-pointer w-full "
+                    className="group relative h-10 px-4 py-2 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-border inline-flex justify-center items-center gap-2 bg-card/70 hover:bg-card transition-colors overflow-visible cursor-pointer w-full "
+                    whileTap={{ scale: 0.96 }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
                   >
                     <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-500 ease-out shadow-[0_0_0_0px_color-mix(in_oklch,var(--border)_50%,transparent)] group-hover:shadow-[0_0_0_4px_color-mix(in_oklch,var(--border)_50%,transparent)]" />
                     <span className="relative z-10 text-accent-foreground text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
                       {link.label}
                     </span>
                     <ExternalLink className="relative z-10 w-4 h-4 text-accent-foreground" />
-                  </a>
+                  </motion.a>
                 </motion.div>
               ))}
             </div>

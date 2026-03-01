@@ -33,6 +33,15 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-project-schaeffler-outline: var(--project-schaeffler-outline);
+  --color-project-schaeffler-bg: var(--project-schaeffler-bg);
+  --color-project-schaeffler-text: var(--project-schaeffler-text);
+  --color-project-schaeffler-text-secondary: var(--project-schaeffler-text-secondary);
+  --color-project-beautified-outline: var(--project-beautified-outline);
+  --color-project-beautified-bg: var(--project-beautified-bg);
+  --color-project-beautified-text: var(--project-beautified-text);
+  --color-project-beautified-text-secondary: var(--project-beautified-text-secondary);
+  --color-card-outline: var(--card-outline);
 }
 
 :root {
@@ -68,12 +77,44 @@
   --sidebar-accent-foreground: oklch(0.2882 0.0080 59.3521);
   --sidebar-border: oklch(0.9181 0.0098 72.6567);
   --sidebar-ring: oklch(0.6596 0.0409 47.2291);
+  /* Project card colors - same for both themes */
+  --project-schaeffler-outline: #BDD0BF;
+  --project-schaeffler-bg: #BFE8C2;
+  --project-schaeffler-text: rgba(255, 255, 255, 0.9);
+  --project-schaeffler-text-secondary: rgba(255, 255, 255, 0.7);
+  /* Schaeffler mesh gradient colors (bottom blobs) */
+  --project-schaeffler-mesh-1: #52734D;
+  --project-schaeffler-mesh-2: #91C788;
+  --project-schaeffler-mesh-3: #DDFFBC;
+  --project-schaeffler-mesh-4: #FEFFDE;
+  --project-beautified-outline: #EAD4C9;
+  --project-beautified-bg: #FFD2A3;
+  --project-beautified-text: rgba(255, 255, 255, 0.9);
+  --project-beautified-text-secondary: rgba(255, 255, 255, 0.7);
+  /* Beautified mesh gradient colors (bottom blobs) */
+  --project-beautified-mesh-1: #EAD4C9;
+  --project-beautified-mesh-2: #FFD2A3;
+  --project-beautified-mesh-3: #FFB36A;
+  --project-beautified-mesh-4: #8E5D48;
+  /* Card outline color */
+  --card-outline: #ffffff;
+  /* Mesh opacity overlay - lighter in light mode */
+  --mesh-opacity-overlay: 0.15;
+  /* Mesh fade gradient stops - smooth fade in light mode */
+  --mesh-fade-start: 0%;
+  --mesh-fade-mid: 50%;
+  --mesh-fade-end: 85%;
+  /* BottomSheet opacity values - lower in light mode to let background shine through */
+  --bottomsheet-backdrop-opacity: 0.08;
+  --bottomsheet-sheet-opacity: 0.06;
+  /* Opposite theme backgrounds for theme toggle icon */
+  --opposite-background: oklch(0.1551 0.0027 67.6265);
 }
 
 .dark {
   --background: oklch(0.1551 0.0027 67.6265);
   --foreground: oklch(0.9216 0.0154 77.0670);
-  --card: oklch(0.1838 0.0052 67.4970);
+  --card: oklch(0.1551 0.0027 67.6265);
   --card-foreground: oklch(0.9216 0.0154 77.0670);
   --popover: oklch(0.1838 0.0052 67.4970);
   --popover-foreground: oklch(0.9216 0.0154 77.0670);
@@ -103,6 +144,28 @@
   --sidebar-accent-foreground: oklch(0.9216 0.0154 77.0670);
   --sidebar-border: oklch(0.2797 0.0093 67.4318);
   --sidebar-ring: oklch(0.5956 0.0317 51.5578);
+  /* Project card colors - same for both themes */
+  --project-schaeffler-outline: #3D5741;
+  --project-schaeffler-bg: #7AD9A1;
+  --project-schaeffler-text: rgba(255, 255, 255, 0.9);
+  --project-schaeffler-text-secondary: rgba(255, 255, 255, 0.7);
+  --project-beautified-outline: #8e5d48;
+  --project-beautified-bg: #FFB36A;
+  --project-beautified-text: rgba(255, 255, 255, 0.9);
+  --project-beautified-text-secondary: rgba(255, 255, 255, 0.7);
+  /* Card outline color */
+  --card-outline: oklch(0.1838 0.0052 67.4970);
+  /* Mesh opacity overlay - stronger in dark mode to dim bright mesh */
+  --mesh-opacity-overlay: 0.35;
+  /* Mesh fade gradient stops - smoother fade in dark mode */
+  --mesh-fade-start: 0%;
+  --mesh-fade-mid: 25%;
+  --mesh-fade-end: 95%;
+  /* BottomSheet opacity values - higher in dark mode for better contrast */
+  --bottomsheet-backdrop-opacity: 0.18;
+  --bottomsheet-sheet-opacity: 0.15;
+  /* Opposite theme backgrounds for theme toggle icon */
+  --opposite-background: oklch(0.9902 0.0039 106.4713);
 }
 
 ::selection {
