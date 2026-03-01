@@ -10,26 +10,29 @@ export function useTheme() {
   useEffect(() => {
     setMounted(true);
     
+    // DARK MODE DISABLED: Always use light theme
     // Get theme from localStorage or system preference
-    const storedTheme = localStorage.getItem("theme") as Theme | null;
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    // const storedTheme = localStorage.getItem("theme") as Theme | null;
+    // const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     
-    const initialTheme = storedTheme || (systemPrefersDark ? "dark" : "light");
+    // const initialTheme = storedTheme || (systemPrefersDark ? "dark" : "light");
+    const initialTheme = "light"; // Force light theme
     setThemeState(initialTheme);
     applyTheme(initialTheme);
     
     // Listen for system preference changes (only if no stored preference)
-    if (!storedTheme) {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-      const handleChange = (e: MediaQueryListEvent) => {
-        const newTheme = e.matches ? "dark" : "light";
-        setThemeState(newTheme);
-        applyTheme(newTheme);
-      };
+    // DISABLED: Dark mode is disabled
+    // if (!storedTheme) {
+    //   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    //   const handleChange = (e: MediaQueryListEvent) => {
+    //     const newTheme = e.matches ? "dark" : "light";
+    //     setThemeState(newTheme);
+    //     applyTheme(newTheme);
+    //   };
       
-      mediaQuery.addEventListener("change", handleChange);
-      return () => mediaQuery.removeEventListener("change", handleChange);
-    }
+    //   mediaQuery.addEventListener("change", handleChange);
+    //   return () => mediaQuery.removeEventListener("change", handleChange);
+    // }
   }, []);
 
   const applyTheme = (newTheme: Theme) => {
@@ -42,14 +45,18 @@ export function useTheme() {
   };
 
   const setTheme = (newTheme: Theme) => {
-    setThemeState(newTheme);
-    localStorage.setItem("theme", newTheme);
-    applyTheme(newTheme);
+    // DARK MODE DISABLED: Always force light theme
+    const forcedTheme = "light";
+    setThemeState(forcedTheme);
+    // localStorage.setItem("theme", newTheme);
+    applyTheme(forcedTheme);
   };
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
+    // DARK MODE DISABLED: No-op function
+    // const newTheme = theme === "light" ? "dark" : "light";
+    // setTheme(newTheme);
+    return; // Disabled
   };
 
   return {

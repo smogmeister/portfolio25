@@ -141,9 +141,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                const storedTheme = localStorage.getItem('theme');
-                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const theme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+                // DARK MODE DISABLED: Always use light theme
+                // const storedTheme = localStorage.getItem('theme');
+                // const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                // const theme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+                const theme = 'light'; // Force light theme
                 if (theme === 'dark') {
                   document.documentElement.classList.add('dark');
                 } else {

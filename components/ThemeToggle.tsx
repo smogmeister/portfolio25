@@ -12,11 +12,12 @@ export function ThemeToggle() {
 
   return (
     <motion.button
-      onClick={toggleTheme}
-      className="w-10 h-10 flex items-center justify-center rounded-full transition-colors hover:bg-accent/50 focus:outline-none focus-visible:outline-none cursor-pointer"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+      onClick={() => {}} // DARK MODE DISABLED: No-op
+      className="w-10 h-10 flex items-center justify-center rounded-full transition-colors hover:bg-accent/50 focus:outline-none focus-visible:outline-none cursor-not-allowed opacity-50"
+      whileHover={{ scale: 1 }}
+      whileTap={{ scale: 1 }}
+      aria-label="Dark mode disabled"
+      disabled
     >
       <div className="relative w-6 h-6 flex items-center justify-center">
         <AnimatePresence mode="wait">
