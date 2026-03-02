@@ -116,8 +116,12 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
                 className="absolute inset-0 -top-2 -bottom-2 backdrop-blur-lg pointer-events-none"
                 style={{
                   background: 'linear-gradient(to top, transparent 0%, var(--background) 100%)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
                   maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
                   WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
+                  transform: 'translateZ(0)',
+                  willChange: 'transform',
                 }}
               />
               
@@ -149,13 +153,15 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
             
             {/* Bottom fade and blur overlay */}
             <div 
-              className="sticky bottom-0 left-0 right-0 z-40 h-32 pointer-events-none"
+              className="sticky bottom-0 left-0 right-0 z-40 h-20 pointer-events-none"
               style={{
                 background: 'linear-gradient(to top, var(--background) 0%, transparent 100%)',
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',
                 maskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
                 WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
+                transform: 'translateZ(0)',
+                willChange: 'transform',
               }}
             />
           </motion.div>
