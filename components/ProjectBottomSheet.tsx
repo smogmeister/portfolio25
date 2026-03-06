@@ -26,7 +26,7 @@ interface ProjectBottomSheetProps {
   title: string;
   description: ReactNode[];
   links: ProjectLink[];
-  images: {
+  images?: {
     src: string;
     alt: string;
   }[];
@@ -91,6 +91,7 @@ function ImageGallery({
   const [cursorSide, setCursorSide] = useState<'left' | 'right' | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isMoving, setIsMoving] = useState(false);
+  const [containerHeight, setContainerHeight] = useState<number | null>(null);
   const lastPositionRef = useRef({ x: 0, y: 0 });
   const moveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
@@ -105,6 +106,20 @@ function ImageGallery({
 
   const goToImage = (index: number) => {
     setCurrentImageIndex(index);
+  };
+
+  const handleFirstImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    if (containerHeight === null && gallery.images.length > 1 && currentImageIndex === 0) {
+      const img = e.currentTarget;
+      // Set height based on natural image dimensions and container width
+      const container = imageContainerRef.current;
+      if (container && img.naturalWidth > 0 && img.naturalHeight > 0) {
+        const containerWidth = container.offsetWidth;
+        const aspectRatio = img.naturalHeight / img.naturalWidth;
+        const calculatedHeight = containerWidth * aspectRatio;
+        setContainerHeight(calculatedHeight);
+      }
+    }
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -211,7 +226,8 @@ function ImageGallery({
             gallery.images.length === 1 ? 'shadow-lg' : ''
           }`}
           style={{
-            cursor: gallery.images.length > 1 ? 'none' : 'default'
+            cursor: gallery.images.length > 1 ? 'none' : 'default',
+            minHeight: containerHeight ? `${containerHeight}px` : undefined,
           }}
         >
           <AnimatePresence mode="wait">
@@ -220,6 +236,7 @@ function ImageGallery({
               src={gallery.images[currentImageIndex]?.src || ""}
               alt={gallery.images[currentImageIndex]?.alt || ""}
               className="w-full h-auto object-contain pointer-events-none"
+              onLoad={currentImageIndex === 0 && containerHeight === null ? handleFirstImageLoad : undefined}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
@@ -297,7 +314,7 @@ export default function ProjectBottomSheet({
   galleries,
 }: ProjectBottomSheetProps) {
   // Create galleries from images if not provided
-  const displayGalleries: Gallery[] = galleries || images.map((img, index) => ({
+  const displayGalleries: Gallery[] = galleries || (images || []).map((img, index) => ({
     headline: `Gallery ${index + 1}`,
     subheader: `Project showcase ${index + 1}`,
     images: [
