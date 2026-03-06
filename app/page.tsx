@@ -138,6 +138,41 @@ export default function Home() {
           { src: "/schaeffler-example-3.png", alt: "schaeffler project 3" },
           { src: "/schaeffler-example-4.png", alt: "schaeffler project 4" },
         ]}
+        galleries={[
+          {
+            headline: "Search results",
+            subheader: "Finding products is the main feature of the platform. Almost every element is A/B tested and personalised for screesizes, user roles and use cases.",
+            images: [
+              { src: "/srp-main.png", alt: "Search result page overview" },
+              { src: "/srp-details-1.png", alt: "Search result page details 1" },
+              { src: "/srp-details-2.png", alt: "Search result page details 2" },
+              { src: "/srp-details-4.png", alt: "Search result page details 3" },
+            ],
+          },
+          {
+            headline: "Product details",
+            subheader: "Data-driven and A/B tested monster pages that are personalised for user roles, product families and intent.",
+            images: [
+              { src: "/schaeffler-example-4.png", alt: "Product detail page example" },
+            ],
+          },
+          {
+            headline: "Product configurations ",
+            subheader: "Configuring highly technical products went from hours to literally seconds.",
+            images: [
+              { src: "/schaeffler-example-2.png", alt: "Product configurator 1" },
+              { src: "/schaeffler-example-3.png", alt: "Product configurator 2" },
+            ],
+          },
+          {
+            headline: "Mass orders",
+            subheader: "Order hundreds of products at once with a single click.",
+            images: [
+              { src: "/bulk_entry_1.jpg", alt: "Bulk entry page example" },
+              { src: "/bulk_entry_2.jpg", alt: "Bulk entry page example 2" },
+            ],
+          },
+        ]}
       />
 
       <ProjectBottomSheet
@@ -161,6 +196,36 @@ export default function Home() {
           { src: "/beautified-example-2.png", alt: "Beautified.app project 2" },
           { src: "/beautified-example-3.png", alt: "Beautified.app project 3" },
           { src: "/beautified-example-4.png", alt: "Beautified.app project 4" },
+        ]}
+        galleries={[
+          {
+            headline: "Main editor with AI chat",
+            subheader: "Main functionality of the app. Users can chat with AI to create charts.",
+            images: [
+              { src: "/beautified-example.png", alt: "Dashboard view 1" },
+            ],
+          },
+          {
+            headline: "Main editor with styles",
+            subheader: "Allow users to manually adjust styles of their charts.",
+            images: [
+              { src: "/beautified-example-2.png", alt: "Chart creation view 1" },
+            ],
+          },
+          {
+            headline: "Dynamic pricing",
+            subheader: "One time purchases to fill up on AI credits. Each chat is one credit.",
+            images: [
+              { src: "/beautified-example-3.png", alt: "AI features view 1" },
+            ],
+          },
+          {
+            headline: "Homepage for signed-in users",
+            subheader: "Signed-in users can manage their recent projects from the homepage.",
+            images: [
+              { src: "/beautified-example-4.png", alt: "Project management view 1" },
+            ],
+          },
         ]}
       />
 
