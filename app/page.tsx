@@ -125,7 +125,7 @@ export default function Home() {
             medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers, that serves thousands of B2B customers daily. As the <span className="underline text-accent-foreground">Design Lead</span>, I own the end-to-end design process and design strategy of this platform.
           </>,
           <>
-            Since I took over that role in 2023, I have established a new design language, introduced a scalable design system, and added countless usability and conversion improvements, based on data. I am also responsible for making design/budget decisions to align design with business goals.
+            Since I took over that role in 2023, I have established a new design language, introduced a scalable design system, and added usability and conversion improvements, based on data. I am also responsible for making design/budget decisions to align design with business goals. I also started introdcuing AI tools into the design process to close the gap between design and development.
           </>,
         ]}
         links={[

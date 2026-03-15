@@ -94,6 +94,7 @@ function ImageGallery({
   const [containerHeight, setContainerHeight] = useState<number | null>(null);
   const lastPositionRef = useRef({ x: 0, y: 0 });
   const moveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
   const nextImage = () => {
@@ -193,6 +194,36 @@ function ImageGallery({
     }
   };
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (gallery.images.length <= 1) return;
+    const touch = e.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (gallery.images.length <= 1 || !touchStartRef.current) return;
+    
+    const touch = e.changedTouches[0];
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const deltaY = touch.clientY - touchStartRef.current.y;
+    const absDeltaX = Math.abs(deltaX);
+    const absDeltaY = Math.abs(deltaY);
+
+    // Only trigger swipe if horizontal movement is greater than vertical (swipe gesture)
+    // and minimum swipe distance is met (50px)
+    if (absDeltaX > absDeltaY && absDeltaX > 50) {
+      if (deltaX > 0) {
+        // Swipe right - go to previous image
+        prevImage();
+      } else {
+        // Swipe left - go to next image
+        nextImage();
+      }
+    }
+    
+    touchStartRef.current = null;
+  };
+
   return (
     <motion.div
       className="mb-24 last:mb-0"
@@ -222,6 +253,8 @@ function ImageGallery({
           onClick={handleImageClick}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           className={`relative w-full overflow-hidden rounded-2xl ${
             gallery.images.length === 1 ? 'shadow-lg' : ''
           }`}
