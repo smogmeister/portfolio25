@@ -269,6 +269,10 @@ export default function ProjectCard({
             const shouldShow = isMobile || isHovered;
             const isPieChart = chart.src === "/pie.svg";
             const isBarChart = chart.src === "/bar.svg";
+            const floatOffset = [3.0, 4.4, 2.4, 2.7][i];
+            const floatDuration = [1.1, 1.55, 1.2, 0.95][i];
+            const floatTopFactor = [0.22, 0.4, 0.18, 0.14][i];
+            const startsMovingUp = i % 2 === 0;
             
             // Adjust left position for mobile to keep pie and bar charts more centered
             let mobileLeft = chart.finalLeft;
@@ -302,13 +306,46 @@ export default function ProjectCard({
                   opacity: shouldShow ? 1 : 0,
                   scale: shouldShow ? 1 : 0.3,
                   x: shouldShow ? chart.moveLeft : '0%',
-                  y: shouldShow ? chart.moveUp : '0px',
+                  y: shouldShow
+                    ? (startsMovingUp
+                        ? [chart.moveUp + floatOffset * floatTopFactor, chart.moveUp - floatOffset]
+                        : [chart.moveUp - floatOffset, chart.moveUp + floatOffset * floatTopFactor])
+                    : '0px',
                   filter: shouldShow ? 'blur(0px) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))' : 'blur(8px)',
                 }}
                 transition={isMobile ? {} : {
-                  duration: 0.3,
-                  delay: shouldShow ? chart.delay : 0,
-                  ease: "easeOut",
+                  opacity: {
+                    duration: 0.3,
+                    delay: shouldShow ? chart.delay : 0,
+                    ease: "easeOut",
+                  },
+                  scale: {
+                    duration: 0.3,
+                    delay: shouldShow ? chart.delay : 0,
+                    ease: "easeOut",
+                  },
+                  x: {
+                    duration: 0.3,
+                    delay: shouldShow ? chart.delay : 0,
+                    ease: "easeOut",
+                  },
+                  y: shouldShow
+                    ? {
+                        duration: floatDuration,
+                        delay: chart.delay + 0.1,
+                        ease: [0.42, 0, 0.58, 1],
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                      }
+                    : {
+                        duration: 0.2,
+                        ease: "easeOut",
+                      },
+                  filter: {
+                    duration: 0.3,
+                    delay: shouldShow ? chart.delay : 0,
+                    ease: "easeOut",
+                  },
                 }}
                 style={{
                   bottom: isMobile ? chart.finalBottom : chart.startBottom,
@@ -357,6 +394,10 @@ export default function ProjectCard({
               const shouldShow = isMobile || isHovered;
               const isCardHovered = hoveredCardIndex === i;
               const IconComponent = card.icon;
+              const floatOffset = [2.4, 3.5, 1.9, 2.1][i];
+              const floatDuration = [1.05, 1.5, 1.5, 0.98][i];
+              const floatTopFactor = [0.16, 0.28, 0.11, 0.1][i];
+              const startsMovingUp = i % 2 !== 0;
               
               // Adjust bottom position for mobile to move cards slightly higher
               let mobileBottom = card.finalBottom;
@@ -390,14 +431,55 @@ export default function ProjectCard({
                     // Keep x at -50% to center cards, animate left position
                     x: '-50%',
                     left: isMobile ? card.finalLeft : (shouldShow ? card.finalLeft : '50%'),
-                    y: isMobile ? '0px' : (shouldShow ? card.moveUp : '0px'),
+                    y: isMobile
+                      ? '0px'
+                      : (shouldShow
+                          ? (startsMovingUp
+                              ? [card.moveUp + floatOffset * floatTopFactor, card.moveUp - floatOffset]
+                              : [card.moveUp - floatOffset, card.moveUp + floatOffset * floatTopFactor])
+                          : '0px'),
                     filter: shouldShow ? 'blur(0px)' : 'blur(8px)',
                     backgroundColor: isCardHovered ? '#E7EFE6' : 'rgba(231, 239, 230, 0.75)',
                   }}
                   transition={{
-                    duration: isMobile ? 0 : 0.3,
-                    delay: isMobile ? 0 : (shouldShow ? card.delay : 0),
-                    ease: "easeOut",
+                    opacity: {
+                      duration: isMobile ? 0 : 0.3,
+                      delay: isMobile ? 0 : (shouldShow ? card.delay : 0),
+                      ease: "easeOut",
+                    },
+                    scale: {
+                      duration: isMobile ? 0 : 0.3,
+                      delay: isMobile ? 0 : (shouldShow ? card.delay : 0),
+                      ease: "easeOut",
+                    },
+                    left: {
+                      duration: isMobile ? 0 : 0.3,
+                      delay: isMobile ? 0 : (shouldShow ? card.delay : 0),
+                      ease: "easeOut",
+                    },
+                    y: isMobile
+                      ? { duration: 0 }
+                      : shouldShow
+                        ? {
+                            duration: floatDuration,
+                            delay: card.delay + 0.08,
+                            ease: [0.42, 0, 0.58, 1],
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                          }
+                        : {
+                            duration: 0.2,
+                            ease: "easeOut",
+                          },
+                    filter: {
+                      duration: isMobile ? 0 : 0.3,
+                      delay: isMobile ? 0 : (shouldShow ? card.delay : 0),
+                      ease: "easeOut",
+                    },
+                    backgroundColor: {
+                      duration: 0.15,
+                      ease: "easeOut",
+                    },
                   }}
                   style={{
                     bottom: isMobile ? mobileBottom : card.startBottom,

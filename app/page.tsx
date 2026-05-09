@@ -144,18 +144,22 @@ export default function Home() {
             ],
           },
           {
-            headline: "Product details",
-            subheader: "Data-driven and A/B tested monster pages that are personalised for user roles, product families and intent.",
+            headline: "Linear Configurator",
+            subheader: "Configure products of the Linear Motion product family to your specific technical needs. ",
             images: [
-              { src: "https://storage.googleapis.com/storage_images_public/schaeffler-example-4.png", alt: "Product detail page example" },
+              { src: "https://storage.googleapis.com/storage_images_public/linear-configurator.png", alt: "Linear Configurator" },
+              { src: "https://storage.googleapis.com/storage_images_public/linear-configurator-summary.png", alt: "Linear Configurator Summary" },
             ],
           },
           {
-            headline: "Product configurations ",
-            subheader: "Configuring highly technical products went from hours to literally seconds.",
+            headline: "Quotes",
+            subheader: "A place where customers can view their quote requests, track the status of quote and place orders with the quote conditions.",
             images: [
-              { src: "https://storage.googleapis.com/storage_images_public/schaeffler-example-2.png", alt: "Product configurator 1" },
-              { src: "https://storage.googleapis.com/storage_images_public/schaeffler-example-3.png", alt: "Product configurator 2" },
+              { src: "https://storage.googleapis.com/storage_images_public/quotes-main.png", alt: "Quotes main page 1" },
+              { src: "https://storage.googleapis.com/storage_images_public/quotes-details.png", alt: "Quote details" },
+              { src: "https://storage.googleapis.com/storage_images_public/quotes-details-1.png", alt: "Quotes details 1" },
+              { src: "https://storage.googleapis.com/storage_images_public/quotes-details-2.png", alt: "Quote details 2" },
+              { src: "https://storage.googleapis.com/storage_images_public/quotes-details-3.png", alt: "Quote details 3" },
             ],
           },
           {
