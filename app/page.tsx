@@ -163,11 +163,17 @@ export default function Home() {
             ],
           },
           {
-            headline: "Mass orders",
-            subheader: "Order hundreds of products at once with a single click.",
+            headline: "Sign up flow for non business customers",
+            subheader: "Everyday people can sign up for a Plus account to access premium features. It considers system dependencies and sets the user up to have a smooth experience. The flow is also design to get enough information to qualify new leads.",
             images: [
-              { src: "https://storage.googleapis.com/storage_images_public/bulk_entry_1.jpg", alt: "Bulk entry page example" },
-              { src: "https://storage.googleapis.com/storage_images_public/bulk_entry_2.jpg", alt: "Bulk entry page example 2" },
+              { src: "https://storage.googleapis.com/storage_images_public/sign-up-flow-main.png", alt: "Sign up main" },
+              { src: "https://storage.googleapis.com/storage_images_public/sign-up-flow-1.png", alt: "Sign up details 1" },
+              { src: "https://storage.googleapis.com/storage_images_public/sign-up-flow-2.png", alt: "Sign up details 2" },
+              { src: "https://storage.googleapis.com/storage_images_public/sign-up-flow-3.png", alt: "Sign up details 3" },
+              { src: "https://storage.googleapis.com/storage_images_public/sign-up-flow-4.png", alt: "Sign up details 4" },
+              { src: "https://storage.googleapis.com/storage_images_public/sign-up-flow-5.png", alt: "Sign up details 5" },
+              { src: "https://storage.googleapis.com/storage_images_public/sign-up-flow-6.png", alt: "Sign up details 6" },
+
             ],
           },
         ]}
