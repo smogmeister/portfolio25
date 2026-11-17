@@ -1,7 +1,7 @@
 "use client";
 import BottomSheet from "./BottomSheet";
-import { ExternalLink, ArrowLeft, ArrowRight } from "lucide-react";
-import { ReactNode, useState, useRef, useEffect } from "react";
+import { ExternalLink, ArrowRight } from "lucide-react";
+import { ReactNode, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ProjectLink {
@@ -32,52 +32,6 @@ interface ProjectBottomSheetProps {
   }[];
   galleries?: Gallery[];
 }
-
-// Custom cursor SVG data URIs
-const createArrowCursor = (direction: 'left' | 'right'): string => {
-  // Get computed color values from the document
-  const getComputedColor = (varName: string): string => {
-    if (typeof window === 'undefined') return '#000000'; // Fallback for SSR
-    
-    // Create a temporary element to get the computed color value
-    const tempEl = document.createElement('div');
-    tempEl.style.color = `var(${varName})`;
-    tempEl.style.position = 'absolute';
-    tempEl.style.visibility = 'hidden';
-    document.body.appendChild(tempEl);
-    
-    const computed = getComputedStyle(tempEl);
-    const color = computed.color;
-    
-    document.body.removeChild(tempEl);
-    
-    return color || '#000000';
-  };
-  
-  // Using design system colors:
-  // Background: white (#ffffff)
-  // Border: border color from CSS variable (computed as RGB)
-  // Icon: foreground color from CSS variable (computed as RGB)
-  const bgColor = '#ffffff'; // White background
-  const borderColor = getComputedColor('--border') || '#e5e5e5';
-  const arrowColor = getComputedColor('--foreground') || '#252525';
-  
-  // Arrow paths: left arrow (←) and right arrow (→) with proper arrowheads
-  const arrowPath = direction === 'left'
-    ? `M 15 12 L 9 12 M 11 9 L 9 12 L 11 15` // Left arrow: horizontal line + arrowhead pointing left
-    : `M 9 12 L 15 12 M 13 9 L 15 12 L 13 15`; // Right arrow: horizontal line + arrowhead pointing right
-  
-  const svg = `<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="shape-rendering: crispEdges;">
-         <circle cx="12" cy="12" r="11" fill="${bgColor}" stroke="${borderColor}" stroke-width="1" vector-effect="non-scaling-stroke"/>
-         <path d="${arrowPath}" stroke="${arrowColor}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-       </svg>`;
-  
-  // Hotspot at center of the circular container
-  const hotspotX = 12;
-  const hotspotY = 12;
-  
-  return `url('data:image/svg+xml;utf8,${encodeURIComponent(svg)}') ${hotspotX} ${hotspotY}, auto`;
-};
 
 // Gallery Component
 function ImageGallery({ 

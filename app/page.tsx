@@ -85,7 +85,7 @@ export default function Home() {
                 y: { duration: 0.7, delay: 0.1, ease: [0.4, 0, 0.2, 1] }
               }}
             >
-              ....that's me in a nutshell. I enjoy making stuff that <Highlighter type="underline" animationDelay={1500} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground"> brings joy into peoples daily lives.</Highlighter> (Possibly because my girlfriend always gets really annoyed at bad HMIs, so I'd like to do better.) I have also developed an unhealthy <Highlighter type="underline" animationDelay={2000} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground">obsession with numbers and data</Highlighter>, so I guess that's what got me here.
+              ....that&apos;s me in a nutshell. I enjoy making stuff that <Highlighter type="underline" animationDelay={1500} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground"> brings joy into peoples daily lives.</Highlighter> (Possibly because my girlfriend always gets really annoyed at bad HMIs, so I&apos;d like to do better.) I have also developed an unhealthy <Highlighter type="underline" animationDelay={2000} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground">obsession with numbers and data</Highlighter>, so I guess that&apos;s what got me here.
             </motion.p>
             <motion.p 
               className="text-muted-foreground font-['Plus_Jakarta_Sans'] leading-relaxed mb-4"
@@ -122,7 +122,7 @@ export default function Home() {
         title="Schaeffler medias"
         description={[
           <>
-            medias is the B2B eCom platform of Schaeffler, one of the world's leading automotive and industrial suppliers, that serves thousands of B2B customers daily. As the <span className="underline text-accent-foreground">Design Lead</span>, I own the end-to-end design process and design strategy of this platform.
+            medias is the B2B eCom platform of Schaeffler, one of the world&apos;s leading automotive and industrial suppliers, that serves thousands of B2B customers daily. As the <span className="underline text-accent-foreground">Design Lead</span>, I own the end-to-end design process and design strategy of this platform.
           </>,
           <>
             Since I took over that role in 2023, I have established a new design language, introduced a scalable design system, and added usability and conversion improvements, based on data. I am also responsible for making design/budget decisions to align design with business goals. I also started introdcuing AI tools into the design process to close the gap between design and development.

@@ -1,6 +1,6 @@
 "use client";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
   AreaChart,
   Area,
@@ -27,117 +27,70 @@ interface CustomTooltipProps {
 }
 
 const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
-  const value = active && payload && payload.length ? payload[0].value : 0;
-  const previousValueRef = useRef<number | null>(null);
-  const isFirstRender = useRef(true);
+  const value = active && payload && payload.length ? payload[0].value : null;
 
-  if (active && payload && payload.length) {
-    const shouldAnimate = !isFirstRender.current && previousValueRef.current !== null && previousValueRef.current !== value;
-    const previousValue = previousValueRef.current;
-    const isIncreasing = previousValue !== null && value > previousValue;
-    
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      previousValueRef.current = value;
-    } else if (previousValueRef.current !== value) {
-      previousValueRef.current = value;
-    }
+  // Remember the previously shown value so the number can animate from it.
+  // Updating state during render is React's pattern for deriving from previous props.
+  const [tracked, setTracked] = useState<{ current: number | null; previous: number | null }>({
+    current: null,
+    previous: null,
+  });
+  if (value !== tracked.current) {
+    setTracked({ current: value, previous: tracked.current });
+  }
 
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.8 }}
-        className="bg-card border border-border/50 rounded-full px-3 py-2 shadow-lg backdrop-blur-md"
-        style={{
-          backgroundColor: "color-mix(in oklch, var(--card) 70%, transparent)",
-          borderColor: "var(--border)",
-        }}
-      >
-        <AnimatedNumber 
-          value={value} 
-          shouldAnimate={shouldAnimate}
-          previousValue={previousValue}
-          isIncreasing={isIncreasing}
-        />
-      </motion.div>
-    );
-  }
-  
-  if (!active) {
-    isFirstRender.current = true;
-    previousValueRef.current = null;
-  }
-  
-  return null;
+  if (value === null) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.8 }}
+      className="bg-card border border-border/50 rounded-full px-3 py-2 shadow-lg backdrop-blur-md"
+      style={{
+        backgroundColor: "color-mix(in oklch, var(--card) 70%, transparent)",
+        borderColor: "var(--border)",
+      }}
+    >
+      {/* Remount per value so each change starts a fresh spring from the previous value */}
+      <AnimatedNumber key={value} value={value} from={tracked.previous} />
+    </motion.div>
+  );
 };
 
-const AnimatedNumber = ({ 
-  value, 
-  shouldAnimate, 
-  previousValue, 
-  isIncreasing 
-}: { 
-  value: number; 
-  shouldAnimate: boolean;
-  previousValue: number | null;
-  isIncreasing: boolean;
-}) => {
-  const initialValue = shouldAnimate && previousValue !== null ? previousValue : value;
-  const motionValue = useMotionValue(initialValue);
+const AnimatedNumber = ({ value, from }: { value: number; from: number | null }) => {
+  const shouldAnimate = from !== null && from !== value;
+  const start = shouldAnimate ? from : value;
+  const motionValue = useMotionValue(start);
   const springValue = useSpring(motionValue, {
     damping: 30,
     stiffness: 200,
   });
-  const [displayValue, setDisplayValue] = useState(initialValue);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [textColor, setTextColor] = useState("var(--foreground)");
+  const [displayValue, setDisplayValue] = useState(start);
+  const [isAnimating, setIsAnimating] = useState(shouldAnimate);
 
   useEffect(() => {
-    if (shouldAnimate && previousValue !== null) {
-      // Start animation from previous value
-      setIsAnimating(true);
-      setDisplayValue(previousValue);
-      const color = isIncreasing ? "#22c55e" : "#ef4444";
-      setTextColor(color);
-      motionValue.set(previousValue);
-      // Then animate to new value
-      requestAnimationFrame(() => {
-        motionValue.set(value);
-      });
-    } else {
-      // Set immediately without animation on first render
-      motionValue.set(value);
-      setDisplayValue(value);
-      setIsAnimating(false);
-      setTextColor("var(--foreground)");
-    }
-  }, [value, shouldAnimate, motionValue, previousValue, isIncreasing]);
-
-  useEffect(() => {
+    if (!shouldAnimate) return;
+    let timer: ReturnType<typeof setTimeout> | undefined;
     const unsubscribe = springValue.on("change", (latest: number) => {
-      const rounded = Math.round(latest);
-      setDisplayValue(rounded);
-      
-      if (shouldAnimate && previousValue !== null) {
-        // Keep isAnimating true while we're still animating
-        const diff = Math.abs(latest - value);
-        if (diff < 0.5) {
-          // Animation complete - reset after a short delay
-          setTimeout(() => {
-            setIsAnimating(false);
-            setTextColor("var(--foreground)");
-          }, 200);
-        } else {
-          // Still animating - ensure flag is true and set color
-          setIsAnimating(true);
-          const color = isIncreasing ? "#22c55e" : "#ef4444";
-          setTextColor(color);
-        }
+      setDisplayValue(Math.round(latest));
+      // Animation complete - reset color after a short delay
+      if (Math.abs(latest - value) < 0.5 && timer === undefined) {
+        timer = setTimeout(() => setIsAnimating(false), 200);
       }
     });
-    return () => unsubscribe();
-  }, [springValue, value, shouldAnimate, previousValue, isIncreasing]);
+    motionValue.set(value);
+    return () => {
+      unsubscribe();
+      clearTimeout(timer);
+    };
+  }, [shouldAnimate, motionValue, springValue, value]);
+
+  const textColor = isAnimating
+    ? value > start
+      ? "#22c55e"
+      : "#ef4444"
+    : "var(--foreground)";
 
   return (
     <p className="text-base font-medium" style={{ color: textColor }}>

@@ -23,8 +23,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
       document.body.style.width = "100%";
       document.body.style.overflow = "hidden";
       
-      // Delay content animation until sheet opening animation completes
-      setIsContentVisible(false);
+      // Delay content animation until sheet opening animation is underway
       const timer = setTimeout(() => {
         setIsContentVisible(true);
       }, 200); // Start content animation earlier while drawer is still sliding up
@@ -40,9 +39,8 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
         // Restore scroll position
         window.scrollTo(0, scrollY);
       };
-    } else {
-      setIsContentVisible(false);
     }
+    // Content visibility is reset to false by the cleanup above when the sheet closes
   }, [isOpen]);
 
   return (
@@ -96,7 +94,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
               duration: 0.45,
               ease: [0.25, 0.1, 0.25, 1]
             }}
-            className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-3xl rounded-t-[32px] overflow-y-auto"
+            className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-3xl rounded-t-[32px] overflow-y-auto flex flex-col"
             style={{
               height: '100dvh',
               maxHeight: '100dvh',
@@ -106,7 +104,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
           >
             {/* Close button header */}
             <div 
-              className="sticky top-0 z-50 flex justify-center items-center pb-12 pt-12"
+              className="sticky top-0 z-50 shrink-0 flex justify-center items-center pb-12 pt-12"
               style={{
                 paddingTop: 'max(env(safe-area-inset-top, 0px) + 2.5rem, 2.5rem)',
               }}
@@ -137,9 +135,10 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
               </motion.button>
             </div>
             
-            {/* Sheet content */}
-            <div 
-              className="relative z-10"
+            {/* Sheet content - grows to fill the sheet so the bottom fade below
+                always sits at the sheet's bottom edge, even when content is short */}
+            <div
+              className="relative z-10 flex-1"
               style={{
                 paddingBottom: 'max(env(safe-area-inset-bottom, 0px) + 1rem, 1rem)',
               }}
@@ -153,7 +152,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
             
             {/* Bottom fade and blur overlay */}
             <div 
-              className="sticky bottom-0 left-0 right-0 z-40 h-20 pointer-events-none"
+              className="sticky bottom-0 left-0 right-0 z-40 h-20 shrink-0 pointer-events-none"
               style={{
                 background: 'linear-gradient(to top, var(--background) 0%, transparent 100%)',
                 backdropFilter: 'blur(12px)',

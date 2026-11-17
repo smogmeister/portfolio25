@@ -110,8 +110,6 @@ export default function ProjectCard({
       // Use index as seed for consistent randomness
       const seed = (index * 4 + i) * 123.456;
       const random1 = Math.sin(seed) * 10000;
-      const random2 = Math.sin(seed * 2) * 10000;
-      const random3 = Math.sin(seed * 3) * 10000;
       
       // Distribute cards evenly across the full width of the SVG container
       // Use fixed positions with balanced spacing: 20%, 40%, 60%, 80%

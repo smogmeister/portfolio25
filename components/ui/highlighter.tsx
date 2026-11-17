@@ -95,7 +95,7 @@ export function Highlighter({
 
   return (
     <Component 
-      ref={elementRef as any} 
+      ref={elementRef} 
       className={cn("", className)} 
       {...props}
     >
