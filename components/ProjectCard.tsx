@@ -252,10 +252,10 @@ export default function ProjectCard({
       )}
       <div className="self-stretch flex flex-col justify-between items-start gap-6 relative z-10 h-full">
         <div className="self-stretch flex flex-col justify-start items-start gap-4">
-          <h2 className="self-stretch text-foreground text-2xl font-['Zodiak'] leading-6">
+          <h2 className="self-stretch text-foreground text-2xl font-[family-name:var(--font-zodiak)] leading-6">
             {title}
           </h2>
-          <p className="self-stretch text-muted-foreground text-base font-normal font-['Plus_Jakarta_Sans'] leading-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 ease-out transform translate-y-0 md:translate-y-[-4px] md:group-hover:translate-y-0 blur-none md:blur-[2px] md:group-hover:blur-none">
+          <p className="self-stretch text-muted-foreground text-base font-normal font-[family-name:var(--font-jakarta)] leading-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 ease-out transform translate-y-0 md:translate-y-[-4px] md:group-hover:translate-y-0 blur-none md:blur-[2px] md:group-hover:blur-none">
             {description}
           </p>
         </div>
@@ -289,7 +289,8 @@ export default function ProjectCard({
               <motion.img
                 key={chart.src}
                 src={chart.src}
-                alt={`Chart ${i + 1}`}
+                alt=""
+                aria-hidden="true"
                 className="absolute pointer-events-none"
                 initial={isMobile ? {
                   opacity: 1,
@@ -519,7 +520,8 @@ export default function ProjectCard({
           >
             <img 
               src="/6204.svg" 
-              alt="6204" 
+              alt=""
+              aria-hidden="true"
               className="w-full h-full object-contain"
               style={{
                 position: "relative",

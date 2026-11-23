@@ -88,11 +88,11 @@ export default function SmallCard({
           <>
             {title && (
               <div className="self-stretch flex flex-col justify-start items-start gap-4">
-                <h2 className={`self-stretch ${finalTextColor} text-2xl font-['Zodiak'] leading-6`}>
+                <h2 className={`self-stretch ${finalTextColor} text-2xl font-[family-name:var(--font-zodiak)] leading-6`}>
                   {title}
                 </h2>
                 {description && (
-                  <p className={`self-stretch ${finalTextSecondaryColor} text-base font-normal font-['Plus_Jakarta_Sans'] leading-6`}>
+                  <p className={`self-stretch ${finalTextSecondaryColor} text-base font-normal font-[family-name:var(--font-jakarta)] leading-6`}>
                     {description}
                   </p>
                 )}

@@ -44,6 +44,10 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
   }, [isOpen]);
 
   return (
+    <>
+    {/* While closed, keep the sheet content in the server-rendered HTML (hidden)
+        so search engines and AI crawlers can read it. */}
+    {!isOpen && <div hidden>{children}</div>}
     <AnimatePresence>
       {isOpen && (
         <>
@@ -167,6 +171,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
         </>
       )}
     </AnimatePresence>
+    </>
   );
 }
 

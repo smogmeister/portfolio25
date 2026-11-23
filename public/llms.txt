@@ -1,0 +1,19 @@
+# Jan Brinkmann
+
+> Product Designer and Design Lead at Schaeffler medias, the B2B eCommerce platform of Schaeffler. Creates human-centered products, design strategies and design systems, with decisions backed by data. Uses AI heavily in the design process.
+
+Portfolio: https://www.jan-brinkmann.com
+
+## About
+
+- Role: Design Lead at Schaeffler medias (since 2023). Owns the end-to-end design process and design strategy of the platform, from budgets and design strategy to shipping final designs and guiding new designers.
+- Focus: delightful software, data-driven design decisions, design systems, AI in design.
+
+## Work
+
+- [Schaeffler medias](https://medias.schaeffler.com): B2B eCommerce platform serving thousands of B2B customers daily. Established a new design language, introduced a scalable design system, and shipped data-driven usability and conversion improvements. Key areas: search results, the Linear Configurator, quotes, and the sign-up flow.
+- [Beautified.app](https://beautified.app): side project for visualizing data and experimenting with AI technologies and design approaches. Built with Tailwind and shadcn/ui, made entirely with AI assistance.
+
+## Contact
+
+- [LinkedIn](https://www.linkedin.com/in/jan-brinkmann-13a939181/)

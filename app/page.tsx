@@ -15,7 +15,7 @@ export default function Home() {
   const [openProject, setOpenProject] = useState<ProjectType>(null);
 
   return (
-    <main className="min-h-screen w-full bg-background flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 font-['Plus_Jakarta_Sans'] relative">
+    <main className="min-h-screen w-full bg-background flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 font-[family-name:var(--font-jakarta)] relative">
       <div 
         className="absolute inset-0 opacity-30 bg-cover bg-center bg-no-repeat bg-fixed"
       />
@@ -64,7 +64,7 @@ export default function Home() {
         <div className="px-8 pb-8">
           <div className="max-w-2xl mx-auto">
             <motion.h2 
-              className="text-3xl font-['Zodiak'] text-foreground mb-6"
+              className="text-3xl font-[family-name:var(--font-zodiak)] text-foreground mb-6"
               initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ 
@@ -76,7 +76,7 @@ export default function Home() {
               Numbers, convenience and design...
             </motion.h2>
             <motion.p 
-              className="text-muted-foreground font-['Plus_Jakarta_Sans'] leading-relaxed mb-4"
+              className="text-muted-foreground font-[family-name:var(--font-jakarta)] leading-relaxed mb-4"
               initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ 
@@ -85,10 +85,10 @@ export default function Home() {
                 y: { duration: 0.7, delay: 0.1, ease: [0.4, 0, 0.2, 1] }
               }}
             >
-              ....that&apos;s me in a nutshell. I enjoy making stuff that <Highlighter type="underline" animationDelay={1500} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground"> brings joy into peoples daily lives.</Highlighter> (Possibly because my girlfriend always gets really annoyed at bad HMIs, so I&apos;d like to do better.) I have also developed an unhealthy <Highlighter type="underline" animationDelay={2000} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground">obsession with numbers and data</Highlighter>, so I guess that&apos;s what got me here.
+              ....that&apos;s me in a nutshell. I enjoy making stuff that <Highlighter type="underline" animationDelay={1500} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground"> brings joy into people&apos;s daily lives.</Highlighter> (Possibly because my girlfriend always gets really annoyed at bad HMIs, so I&apos;d like to do better.) I have also developed an unhealthy <Highlighter type="underline" animationDelay={2000} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground">obsession with numbers and data</Highlighter>, so I guess that&apos;s what got me here.
             </motion.p>
             <motion.p 
-              className="text-muted-foreground font-['Plus_Jakarta_Sans'] leading-relaxed mb-4"
+              className="text-muted-foreground font-[family-name:var(--font-jakarta)] leading-relaxed mb-4"
               initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ 
@@ -97,10 +97,10 @@ export default function Home() {
                 y: { duration: 0.9, delay: 0.4, ease: [0.4, 0, 0.2, 1] }
               }}
             >
-              Fun aside, curiosity and hunger to do cool stuff is what gets me motivated in the morning. For me, quality is in simplicity. Thats why I focus on making delightful software, where decisions are backed by data in combination with components that feel premium. At the moment I am the <Highlighter type="underline" animationDelay={2500} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground">Design Lead</Highlighter> at Schaeffler medias. While I do spent most of my time designing, my responsibilities also include overseeing the entire design lifecycle from budgets and design strategy to shipping final designs and guiding new designers. <Highlighter type="underline" animationDelay={3000} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground">AI</Highlighter> has also become a huge part in my daily work and I am excited to see what other limits AI will push.
+              Fun aside, curiosity and hunger to do cool stuff is what gets me motivated in the morning. For me, quality is in simplicity. That&apos;s why I focus on making delightful software, where decisions are backed by data in combination with components that feel premium. At the moment I am the <Highlighter type="underline" animationDelay={2500} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground">Design Lead</Highlighter> at Schaeffler medias. While I do spend most of my time designing, my responsibilities also include overseeing the entire design lifecycle from budgets and design strategy to shipping final designs and guiding new designers. <Highlighter type="underline" animationDelay={3000} padding={1} color="var(--primary)" animationDuration={400} className="text-muted-foreground">AI</Highlighter> has also become a huge part in my daily work and I am excited to see what other limits AI will push.
             </motion.p>
             <motion.p 
-              className="text-muted-foreground font-['Plus_Jakarta_Sans'] leading-relaxed"
+              className="text-muted-foreground font-[family-name:var(--font-jakarta)] leading-relaxed"
               initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ 
@@ -125,7 +125,7 @@ export default function Home() {
             medias is the B2B eCom platform of Schaeffler, one of the world&apos;s leading automotive and industrial suppliers, that serves thousands of B2B customers daily. As the <span className="underline text-accent-foreground">Design Lead</span>, I own the end-to-end design process and design strategy of this platform.
           </>,
           <>
-            Since I took over that role in 2023, I have established a new design language, introduced a scalable design system, and added usability and conversion improvements, based on data. I am also responsible for making design/budget decisions to align design with business goals. I also started introdcuing AI tools into the design process to close the gap between design and development.
+            Since I took over that role in 2023, I have established a new design language, introduced a scalable design system, and added usability and conversion improvements, based on data. I am also responsible for making design/budget decisions to align design with business goals. I also started introducing AI tools into the design process to close the gap between design and development.
           </>,
         ]}
         links={[
@@ -188,7 +188,7 @@ export default function Home() {
             Beautified.app is my side project. Here I experiment with different AI technologies and design approaches. Originally I started this because I wanted a cool tool to visualize some data for my presentations, but it also found a small group of users.
           </>,
           <>
-            Never the less, I do not see it as a Startup or SaaS, but more of a fun way to play and experiment with design and AI. I use Tailwind and Shadcn and made it completly with help of AI.
+            Nevertheless, I do not see it as a Startup or SaaS, but more of a fun way to play and experiment with design and AI. I use Tailwind and Shadcn and made it completely with help of AI.
           </>,
         ]}
         links={[

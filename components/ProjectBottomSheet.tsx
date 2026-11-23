@@ -191,10 +191,10 @@ function ImageGallery({
     >
       {/* Headline and Subheader */}
       <div className="mb-6">
-        <h3 className="text-xl font-['Zodiak'] text-foreground mb-1">
+        <h3 className="text-xl font-[family-name:var(--font-zodiak)] text-foreground mb-1">
           {gallery.headline}
         </h3>
-        <p className="text-muted-foreground font-['Plus_Jakarta_Sans'] text-sm">
+        <p className="text-muted-foreground font-[family-name:var(--font-jakarta)] text-sm">
           {gallery.subheader}
         </p>
       </div>
@@ -223,6 +223,7 @@ function ImageGallery({
               src={gallery.images[currentImageIndex]?.src || ""}
               alt={gallery.images[currentImageIndex]?.alt || ""}
               className="w-full h-auto object-contain pointer-events-none"
+              loading="lazy"
               onLoad={currentImageIndex === 0 && containerHeight === null ? handleFirstImageLoad : undefined}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -318,7 +319,7 @@ export default function ProjectBottomSheet({
         <div className="max-w-2xl mx-auto">
           <motion.h2 
             key="title"
-            className="text-3xl font-['Zodiak'] text-foreground mb-8"
+            className="text-3xl font-[family-name:var(--font-zodiak)] text-foreground mb-8"
             initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
             animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             transition={{ 
@@ -337,7 +338,7 @@ export default function ProjectBottomSheet({
               {description.map((paragraph, index) => (
                 <motion.p
                   key={index}
-                  className="text-muted-foreground font-['Plus_Jakarta_Sans'] leading-relaxed mb-4 last:mb-0"
+                  className="text-muted-foreground font-[family-name:var(--font-jakarta)] leading-relaxed mb-4 last:mb-0"
                   initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
                   animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                   transition={{ 
@@ -375,7 +376,7 @@ export default function ProjectBottomSheet({
                     transition={{ duration: 0.15, ease: "easeOut" }}
                   >
                     <span className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-500 ease-out shadow-[0_0_0_0px_color-mix(in_oklch,var(--border)_50%,transparent)] group-hover:shadow-[0_0_0_4px_color-mix(in_oklch,var(--border)_50%,transparent)]" />
-                    <span className="relative z-10 text-accent-foreground text-sm font-medium font-['Plus_Jakarta_Sans'] leading-6">
+                    <span className="relative z-10 text-accent-foreground text-sm font-medium font-[family-name:var(--font-jakarta)] leading-6">
                       {link.label}
                     </span>
                     <ExternalLink className="relative z-10 w-4 h-4 text-accent-foreground" />
@@ -394,7 +395,7 @@ export default function ProjectBottomSheet({
 
           {/* Disclaimer text */}
           <motion.p
-            className="text-muted-foreground text-xs font-['Plus_Jakarta_Sans'] mt-6 text-center"
+            className="text-muted-foreground text-xs font-[family-name:var(--font-jakarta)] mt-6 text-center"
             initial={{ opacity: 0, filter: "blur(10px)", y: 2 }}
             animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             transition={{ 
