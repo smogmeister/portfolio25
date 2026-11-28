@@ -8,7 +8,7 @@ import BottomSheet from "../components/BottomSheet";
 import ProjectBottomSheet from "../components/ProjectBottomSheet";
 import { Highlighter } from "../components/ui/highlighter";
 
-type ProjectType = "profile" | "schaeffler" | "beautified" | null;
+type ProjectType = "schaeffler" | "beautified" | null;
 
 export default function Home() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -194,12 +194,6 @@ export default function Home() {
         links={[
           { label: "View online", url: "https://beautified.app" },
           { label: "View in Figma", url: "https://www.figma.com/design/E9h6FXwgYwqShDPrUyKpsl/Portfolio?node-id=48-12229&t=fKPugTQKA8eOOZjf-1" },
-        ]}
-        images={[
-          { src: "https://storage.googleapis.com/storage_images_public/beautified-example.png", alt: "Beautified.app project 1" },
-          { src: "https://storage.googleapis.com/storage_images_public/beautified-example-2.png", alt: "Beautified.app project 2" },
-          { src: "https://storage.googleapis.com/storage_images_public/beautified-example-3.png", alt: "Beautified.app project 3" },
-          { src: "https://storage.googleapis.com/storage_images_public/beautified-example-4.png", alt: "Beautified.app project 4" },
         ]}
         galleries={[
           {

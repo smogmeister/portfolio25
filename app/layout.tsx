@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "../components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
 import localFont from "next/font/local";
 import { siteUrl } from "@/lib/site";
@@ -121,29 +120,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                // DARK MODE DISABLED: Always use light theme
-                // const storedTheme = localStorage.getItem('theme');
-                // const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                // const theme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
-                const theme = 'light'; // Force light theme
-                if (theme === 'dark') {
-                  document.documentElement.classList.add('dark');
-                } else {
-                  document.documentElement.classList.remove('dark');
-                }
-              })();
-            `,
-          }}
-        />
       </head>
       <body className={`${jakarta.className} antialiased bg-background text-foreground`}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        {children}
         <Analytics />
       </body>
     </html>

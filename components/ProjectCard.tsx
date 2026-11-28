@@ -7,10 +7,6 @@ import BeautifiedFieldSVG from "./BeautifiedFieldSVG";
 interface ProjectCardProps {
   title: string;
   description: string;
-  outlineColor?: string;
-  bgColor?: string;
-  textColor?: string;
-  textSecondaryColor?: string;
   projectType?: "schaeffler" | "beautified";
   onClick?: () => void;
   index?: number;
@@ -19,10 +15,6 @@ interface ProjectCardProps {
 export default function ProjectCard({
   title,
   description,
-  outlineColor,
-  bgColor,
-  textColor,
-  textSecondaryColor,
   projectType,
   onClick,
   index = 0,
@@ -156,20 +148,6 @@ export default function ProjectCard({
     return positions;
   }, [index]);
 
-  // Use CSS variables if projectType is provided, otherwise use props
-  const finalOutlineColor = projectType 
-    ? `var(--project-${projectType}-outline)`
-    : outlineColor || "#000000";
-  const finalBgColor = projectType
-    ? `var(--project-${projectType}-bg)`
-    : bgColor || "#ffffff";
-  const finalTextColor = projectType
-    ? `var(--project-${projectType}-text)`
-    : textColor || "text-foreground";
-  const finalTextSecondaryColor = projectType
-    ? `var(--project-${projectType}-text-secondary)`
-    : textSecondaryColor || "text-muted-foreground";
-
   // Generate mesh gradient background biased toward the bottom of the card.
   // Uses 4 configurable CSS variables per project type.
   const getMeshGradient = () => {
@@ -205,7 +183,7 @@ export default function ProjectCard({
       }}
     >
       <motion.article 
-        className="group w-full h-full p-8 bg-card rounded-[32px] border border-border/50 outline outline-12 outline-offset-[-12px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer min-h-[360px]"
+        className="group w-full h-full p-8 bg-card rounded-[32px] border border-border/50 outline outline-12 outline-offset-[-12px] inline-flex flex-col justify-start items-start gap-2.5 overflow-hidden relative cursor-pointer min-h-[360px] focus-visible:ring-2 focus-visible:ring-ring"
         style={{
           outlineColor: "var(--card-outline)",
           backgroundColor: "var(--card)",
@@ -219,9 +197,21 @@ export default function ProjectCard({
               }
             : {}),
         }}
+        role="button"
+        tabIndex={0}
+        aria-label={title}
         onClick={onClick}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onClick?.();
+          }
+        }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        // Only the card's own focus counts: the field SVG below blurs itself on click
+        onFocus={(e) => e.target === e.currentTarget && setIsHovered(true)}
+        onBlur={(e) => e.target === e.currentTarget && setIsHovered(false)}
       >
       {/* Opacity overlay to reduce mesh gradient intensity */}
       {getMeshGradient() && (
@@ -255,7 +245,7 @@ export default function ProjectCard({
           <h2 className="self-stretch text-foreground text-2xl font-[family-name:var(--font-zodiak)] leading-6">
             {title}
           </h2>
-          <p className="self-stretch text-muted-foreground text-base font-normal leading-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 ease-out transform translate-y-0 md:translate-y-[-4px] md:group-hover:translate-y-0 blur-none md:blur-[2px] md:group-hover:blur-none">
+          <p className="self-stretch text-muted-foreground text-base font-normal leading-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 ease-out transform translate-y-0 md:translate-y-[-4px] md:group-hover:translate-y-0 blur-none md:blur-[2px] md:group-hover:blur-none md:group-focus-visible:opacity-100 md:group-focus-visible:translate-y-0 md:group-focus-visible:blur-none">
             {description}
           </p>
         </div>
@@ -519,7 +509,7 @@ export default function ProjectCard({
             }}
           >
             <img 
-              src="/6204.svg" 
+              src="/6204.webp" 
               alt=""
               aria-hidden="true"
               className="w-full h-full object-contain"

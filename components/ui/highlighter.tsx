@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { annotate } from "rough-notation";
-import { cn } from "@/lib/utils";
 
 type AnnotationType = 
   | "underline" 
@@ -96,7 +95,7 @@ export function Highlighter({
   return (
     <Component 
       ref={elementRef} 
-      className={cn("", className)} 
+      className={className} 
       {...props}
     >
       {children}

@@ -43,6 +43,16 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
     // Content visibility is reset to false by the cleanup above when the sheet closes
   }, [isOpen]);
 
+  // Close on Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, onClose]);
+
   return (
     <>
     {/* While closed, keep the sheet content in the server-rendered HTML (hidden)
@@ -78,6 +88,8 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
           
           {/* Sheet */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
             initial={{ 
               y: "100%",
               opacity: 0,
@@ -131,6 +143,7 @@ export default function BottomSheet({ isOpen, onClose, children }: BottomSheetPr
                 onClick={onClose}
                 className="group relative h-10 w-10 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-border inline-flex justify-center items-center bg-card/70 hover:bg-card transition-colors overflow-visible cursor-pointer z-10 pointer-events-auto"
                 aria-label="Close"
+                autoFocus
                 whileTap={{ scale: 0.96 }}
                 transition={{ duration: 0.15, ease: "easeOut" }}
               >

@@ -24,11 +24,6 @@ export default function IntroCard({ onMoreClick, index = 0, maxIndex = 3 }: Intr
             outlineColor: "var(--card-outline)",
           }}
         >
-      {/* Theme toggle in top right */}
-      {/*<div className="absolute top-6 right-6 z-10">
-        <ThemeToggle />
-      </div>*/}
-      
       <img 
         src="/avatar.webp" 
         alt="Jan Brinkmann" 

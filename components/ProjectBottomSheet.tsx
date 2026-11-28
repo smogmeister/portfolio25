@@ -26,11 +26,7 @@ interface ProjectBottomSheetProps {
   title: string;
   description: ReactNode[];
   links: ProjectLink[];
-  images?: {
-    src: string;
-    alt: string;
-  }[];
-  galleries?: Gallery[];
+  galleries: Gallery[];
 }
 
 // Gallery Component
@@ -298,21 +294,8 @@ export default function ProjectBottomSheet({
   title,
   description,
   links,
-  images,
   galleries,
 }: ProjectBottomSheetProps) {
-  // Create galleries from images if not provided
-  const displayGalleries: Gallery[] = galleries || (images || []).map((img, index) => ({
-    headline: `Gallery ${index + 1}`,
-    subheader: `Project showcase ${index + 1}`,
-    images: [
-      // Repeat the same image 3 times for now
-      { src: img.src, alt: `${img.alt} - Image 1` },
-      { src: img.src, alt: `${img.alt} - Image 2` },
-      { src: img.src, alt: `${img.alt} - Image 3` },
-    ],
-  }));
-
   return (
     <BottomSheet isOpen={isOpen} onClose={onClose}>
       <div className="px-4 sm:px-6 lg:px-8 pb-8">
@@ -388,7 +371,7 @@ export default function ProjectBottomSheet({
 
           {/* Galleries - Vertical Layout */}
           <div className="space-y-0">
-            {displayGalleries.map((gallery, index) => (
+            {galleries.map((gallery, index) => (
               <ImageGallery key={index} gallery={gallery} index={index} />
             ))}
           </div>
