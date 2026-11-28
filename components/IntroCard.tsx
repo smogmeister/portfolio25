@@ -43,7 +43,7 @@ export default function IntroCard({ onMoreClick, index = 0, maxIndex = 3 }: Intr
           <h1 className="self-stretch text-foreground text-2xl font-[family-name:var(--font-zodiak)] leading-6">
             Hi, I&apos;m <Highlighter type="underline" animationDelay={allCardsFadedInDelay * 1000} padding={0} color="var(--primary)" animationDuration={400} verticalOffset={0}>Jan</Highlighter><span className="sr-only"> Brinkmann, Product Designer and Design Lead</span> <span className="text-muted-foreground text-sm ml-1" aria-hidden="true">(ya-hn)</span>
           </h1>
-          <p className="self-stretch text-muted-foreground text-base font-normal font-[family-name:var(--font-jakarta)] leading-6">
+          <p className="self-stretch text-muted-foreground text-base font-normal leading-6">
             I shape design strategies and create human-centered products for startups and enterprises. Currently, I work as a Design Lead at Schaeffler.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function IntroCard({ onMoreClick, index = 0, maxIndex = 3 }: Intr
           <span 
             className="absolute inset-0 rounded-[999px] pointer-events-none transition-all duration-500 ease-out shadow-[0_0_0_0px_color-mix(in_oklch,var(--border)_50%,transparent)] group-hover:shadow-[0_0_0_4px_color-mix(in_oklch,var(--border)_50%,transparent)]"
           />
-          <span className="relative z-10 text-accent-foreground text-sm font-medium font-[family-name:var(--font-jakarta)] leading-6">
+          <span className="relative z-10 text-accent-foreground text-sm font-medium leading-6">
             More about me
           </span>
           <ArrowRight className="relative z-10 w-4 h-4 text-accent-foreground transition-transform duration-500 ease-out group-hover:-rotate-90" />

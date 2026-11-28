@@ -255,7 +255,7 @@ export default function ProjectCard({
           <h2 className="self-stretch text-foreground text-2xl font-[family-name:var(--font-zodiak)] leading-6">
             {title}
           </h2>
-          <p className="self-stretch text-muted-foreground text-base font-normal font-[family-name:var(--font-jakarta)] leading-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 ease-out transform translate-y-0 md:translate-y-[-4px] md:group-hover:translate-y-0 blur-none md:blur-[2px] md:group-hover:blur-none">
+          <p className="self-stretch text-muted-foreground text-base font-normal leading-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 ease-out transform translate-y-0 md:translate-y-[-4px] md:group-hover:translate-y-0 blur-none md:blur-[2px] md:group-hover:blur-none">
             {description}
           </p>
         </div>

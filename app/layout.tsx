@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
 import localFont from "next/font/local";
+import { siteUrl } from "@/lib/site";
 
 const jakarta = localFont({
   src: [
@@ -19,8 +20,6 @@ const zodiak = localFont({
   variable: "--font-zodiak",
   display: "swap",
 });
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.jan-brinkmann.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -71,9 +70,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.jan-brinkmann.com";
-
-  const personSchema = {
+    const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Jan Brinkmann",
@@ -143,7 +140,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased bg-background text-foreground">
+      <body className={`${jakarta.className} antialiased bg-background text-foreground`}>
         <ThemeProvider>
           {children}
         </ThemeProvider>

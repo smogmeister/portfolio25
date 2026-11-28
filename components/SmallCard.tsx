@@ -92,7 +92,7 @@ export default function SmallCard({
                   {title}
                 </h2>
                 {description && (
-                  <p className={`self-stretch ${finalTextSecondaryColor} text-base font-normal font-[family-name:var(--font-jakarta)] leading-6`}>
+                  <p className={`self-stretch ${finalTextSecondaryColor} text-base font-normal leading-6`}>
                     {description}
                   </p>
                 )}
